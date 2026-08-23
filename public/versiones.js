@@ -20,5 +20,13 @@ window.XV_VERSIONES = [
     alt: "Miranda junto al lago",
     acento: "gala",
     destacada: true
+  },
+  {
+    slug: "invitacion-disco.html",
+    titulo: "La versión disco",
+    descripcion: "Neón, confeti, marquesinas y pista de baile: la versión más llamativa y con más movimiento.",
+    imagen: "assets/img/hero/h28.jpg",
+    alt: "Miranda a la orilla del lago",
+    acento: "disco"
   }
 ];

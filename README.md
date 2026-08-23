@@ -3,7 +3,9 @@
 Invitación digital para los XV años de Miranda — **sábado 26 de septiembre de 2026**.
 Sitio estático, sin base de datos y sin proceso de build: se sirve tal cual con Nginx.
 
-- `/` — la invitación (portada, cuenta regresiva, galería, mapas, WhatsApp)
+- `/` — la portada, donde el invitado elige entre las versiones de la invitación
+- `/invitacion-clasica.html` · `/invitacion-gala.html` · `/invitacion-disco.html` — las tres
+  invitaciones (portada, cuenta regresiva, galería, mapas, WhatsApp)
 - `/pases/` — generador de pases digitales en PNG 1080×1920 (herramienta interna, marcada `noindex`)
 
 ---
@@ -15,7 +17,11 @@ Sitio estático, sin base de datos y sin proceso de build: se sirve tal cual con
 ├── Dockerfile           imagen de Nginx con el sitio adentro
 ├── nginx.conf           compresión, caché y sonda /healthz
 └── public/
-    ├── index.html       la invitación
+    ├── index.html       la portada con las versiones
+    ├── versiones.js     ← la lista de invitaciones que muestra la portada
+    ├── invitacion-clasica.html
+    ├── invitacion-gala.html
+    ├── invitacion-disco.html
     ├── pases/
     │   └── index.html   generador de pases (autocontenido)
     └── assets/
@@ -106,8 +112,15 @@ cd public && python3 -m http.server 8080
 | Recepción | 9:00 pm — Salón Cantabria |
 | Vestimenta | Formal |
 
-Paleta: rosa blush `#F0BCC6` · plata `#DCDFE5` · fondo ciruela `#0C0710`.
-Tipografías: **Bodoni Moda** (títulos) y **Jost** (texto), desde Google Fonts.
+Paleta de las versiones clásica y gala: rosa blush `#F0BCC6` · plata `#DCDFE5` ·
+fondo ciruela `#0C0710`, con **Bodoni Moda** (títulos) y **Jost** (texto).
+
+La versión disco usa su propia paleta de neón: magenta `#FF2E9A` · cyan `#2FE6E0` ·
+oro `#FFC94D` · violeta `#8B5CF6` sobre `#07040F`, con **Monoton** (el nombre),
+**Bebas Neue** (títulos) y **Jost** (texto). Todas las fuentes vienen de Google Fonts.
+
+Todo el movimiento de la versión disco se apaga solo si el teléfono tiene activada
+la opción de reducir animaciones.
 
 ---
 
