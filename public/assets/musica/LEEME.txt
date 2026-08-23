@@ -1,0 +1,13 @@
+Aquí va la canción de la invitación.
+
+1. Copia el archivo mp3 en esta misma carpeta.
+2. Nómbralo  cancion.mp3  (o cambia la ruta en public/assets/config.js).
+3. Haz commit y push; Coolify vuelve a desplegar solo.
+
+Recomendaciones:
+- 128 kbps mono o estéreo es más que suficiente; el archivo debe pesar poco
+  porque se descarga en celulares con datos.
+- Si el mp3 pasa de 4 MB, recórtalo a los 60–90 segundos que más te gusten:
+  ffmpeg -i original.mp3 -ss 00:00:20 -t 90 -b:a 128k cancion.mp3
+- La música solo arranca después de que el invitado toca "Abrir invitación";
+  los navegadores no permiten reproducir audio sin esa interacción.
