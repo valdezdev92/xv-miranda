@@ -4,8 +4,9 @@ Invitación digital para los XV años de Miranda — **sábado 26 de septiembre 
 Sitio estático, sin base de datos y sin proceso de build: se sirve tal cual con Nginx.
 
 - `/` — la portada, donde el invitado elige entre las versiones de la invitación
-- `/invitacion-clasica.html` · `/invitacion-gala.html` · `/invitacion-disco.html` — las tres
-  invitaciones (portada, cuenta regresiva, galería, mapas, WhatsApp)
+- `/invitacion-clasica.html` · `/invitacion-gala.html` · `/invitacion-disco.html` ·
+  `/invitacion-disco-rosa.html` — las cuatro invitaciones (portada, cuenta regresiva,
+  galería, papás, mapas, detalles de la noche, WhatsApp)
 - `/pases/` — generador de pases digitales en PNG 1080×1920 (herramienta interna, marcada `noindex`)
 
 ---
@@ -22,10 +23,11 @@ Sitio estático, sin base de datos y sin proceso de build: se sirve tal cual con
     ├── invitacion-clasica.html
     ├── invitacion-gala.html
     ├── invitacion-disco.html
+    ├── invitacion-disco-rosa.html
     ├── pases/
     │   └── index.html   generador de pases (autocontenido)
     └── assets/
-        ├── config.js    ← WhatsApp y música se cambian AQUÍ
+        ├── config.js    ← WhatsApp, papás y música se cambian AQUÍ
         ├── favicon.svg
         ├── img/hero/    4 fotos de portada (1800 px)
         ├── img/gal/     las 15 fotos del carrusel (1200 px)
@@ -47,7 +49,18 @@ whatsapp: "526141234567",   // 52 + 1 + lada + número
 
 Mientras esté vacío, el botón de confirmar aparece apagado con un aviso.
 
-### 2. La canción
+### 2. Los nombres de los papás
+
+En el mismo `config.js`:
+
+```js
+padres: { mama: "María López", papa: "Juan Valdez" },
+```
+
+Mientras los dos estén vacíos, la sección de papás no aparece en ninguna
+de las cuatro invitaciones.
+
+### 3. La canción
 
 Copia el mp3 en `public/assets/musica/` con el nombre `cancion.mp3`
 (o cambia la ruta en `config.js`). Si el archivo no existe, el botón de
@@ -116,11 +129,14 @@ Paleta de las versiones clásica y gala: rosa blush `#F0BCC6` · plata `#DCDFE5`
 fondo ciruela `#0C0710`, con **Bodoni Moda** (títulos) y **Jost** (texto).
 
 La versión disco usa su propia paleta de neón: magenta `#FF2E9A` · cyan `#2FE6E0` ·
-oro `#FFC94D` · violeta `#8B5CF6` sobre `#07040F`, con **Monoton** (el nombre),
-**Bebas Neue** (títulos) y **Jost** (texto). Todas las fuentes vienen de Google Fonts.
+oro `#FFC94D` · violeta `#8B5CF6` sobre `#07040F`. La versión disco rosa es la misma
+fiesta en claro: blush `#FFF1F5` de fondo, texto ciruela `#4A1F38` y acentos en
+rosa `#E85D9B`, lila `#C9A7E8` y oro rosa `#D9A17C`. Las dos usan **Monoton**
+(el nombre), **Bebas Neue** (títulos) y **Jost** (texto). Todas las fuentes vienen
+de Google Fonts.
 
-Todo el movimiento de la versión disco se apaga solo si el teléfono tiene activada
-la opción de reducir animaciones.
+Todo el movimiento de las dos versiones disco se apaga solo si el teléfono tiene
+activada la opción de reducir animaciones.
 
 ---
 
