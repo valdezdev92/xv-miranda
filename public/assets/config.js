@@ -16,6 +16,6 @@ window.XV_CONFIG = {
   /* Canción de fondo. Deja el archivo en public/assets/musica/
      y escribe aquí su ruta. Si lo dejas vacío, el botón de
      música no aparece.                                        */
-  musica: "assets/musica/cancion.mp3"
+  musica: ""
 
 };
