@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Miranda · Mis XV Años</title>
+<meta name="description" content="Invitación a los XV años de Miranda. Sábado 26 de septiembre de 2026 — Misa 7:00 pm en la Iglesia San Felipe y recepción 9:00 pm en el Salón Cantabria.">
+<meta name="theme-color" content="#0C0710">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/gal/g30.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Miranda · Mis XV Años">
+<meta property="og:description" content="Sábado 26 de septiembre de 2026 · Misa 7:00 pm · Recepción 9:00 pm">
+<meta property="og:image" content="assets/og.jpg">
+<meta property="og:locale" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/img/hero/h6.jpg" fetchpriority="high">
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap">
+
+<style>
+/* ============================================================
+   MIRANDA · XV AÑOS — blush + plata, temática disco
+   Diseño de una sola atmósfera (noche). No usa tema claro.
+   ============================================================ */
+:root{
+  --ground:#0C0710;
+  --ground-2:#150C14;
+  --surface:#1C1119;
+  --surface-2:#241621;
+  --line:rgba(240,188,198,.18);
+  --line-strong:rgba(220,223,229,.30);
+
+  --blush:#F0BCC6;
+  --blush-soft:#F7D9DF;
+  --blush-deep:#C97C8E;
+  --blush-glow:rgba(240,188,198,.35);
+
+  --silver:#DCDFE5;
+  --silver-dim:#9198A2;
+
+  --ink:#F8EFF1;
+  --ink-soft:#CDBCC2;
+
+  --chrome:linear-gradient(163deg,#FFFFFF 0%,#FFF3F6 12%,#F0D6DD 26%,#FFFFFF 42%,#DCE1E8 58%,#FFF8FA 74%,#F3DDE3 88%,#FFFFFF 100%);
+
+  --step--1:clamp(.72rem,.68rem + .18vw,.82rem);
+  --step-0:clamp(1rem,.95rem + .25vw,1.08rem);
+  --step-1:clamp(1.22rem,1.1rem + .6vw,1.5rem);
+  --step-2:clamp(1.6rem,1.3rem + 1.5vw,2.4rem);
+  --step-3:clamp(2.4rem,1.7rem + 3.4vw,4.4rem);
+  --step-4:clamp(3.4rem,1.9rem + 8.5vw,9rem);
+
+  --pad:clamp(1.25rem,5vw,2.5rem);
+  --col:min(100% - var(--pad)*2, 660px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Jost",ui-sans-serif,system-ui,"Segoe UI",sans-serif;
+  font-size:var(--step-0);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.locked{overflow:hidden;height:100svh}
+
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blush);outline-offset:3px;border-radius:2px}
+
+/* ---------- capa ambiental (luces de esfera) ---------- */
+#ambient{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #2A1522 0%, rgba(42,21,34,0) 60%),
+    radial-gradient(90% 60% at 100% 100%, #1A1119 0%, rgba(26,17,25,0) 70%),
+    var(--ground);
+}
+#specks{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.85}
+#grain{
+  position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.6'/></svg>");
+}
+
+/* ---------- esfera de espejos ---------- */
+.ball{
+  --d:96px;
+  width:var(--d);height:var(--d);border-radius:50%;
+  position:relative;flex:none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.10) 0 5px, rgba(0,0,0,.34) 5px 6px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.13) 0 5px, rgba(0,0,0,.34) 5px 6px),
+    radial-gradient(circle at 33% 27%, #FFFAFB 0%, #F8D5DD 14%, #E2BCC7 30%, #BCC2CB 52%, #7A5F6C 76%, #2A1B25 100%);
+  box-shadow:0 0 46px var(--blush-glow), 0 0 110px rgba(220,223,229,.14), inset -14px -16px 34px rgba(0,0,0,.55);
+  animation:spin 14s linear infinite;
+}
+.ball::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 30% 24%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 26%);
+  mix-blend-mode:screen;
+}
+.ball-hang{position:absolute;left:50%;bottom:100%;width:1px;height:clamp(28px,7vw,64px);background:linear-gradient(180deg,rgba(220,223,229,0),rgba(220,223,229,.55))}
+@keyframes spin{to{background-position:0 0, 96px 0, 0 0}}
+
+.ball-wrap{display:flex;justify-content:center;position:relative;padding-top:clamp(28px,7vw,64px)}
+
+/* ---------- portada / gate ---------- */
+#gate{
+  position:fixed;inset:0;z-index:60;overflow:hidden;
+  display:grid;place-items:center;text-align:center;
+  padding:var(--pad);
+  background:
+    radial-gradient(100% 70% at 50% 0%, #331A29 0%, rgba(51,26,41,0) 65%),
+    linear-gradient(180deg,#120A11 0%,#0A0509 100%);
+  transition:opacity .9s ease, visibility .9s;
+}
+#gate.gone{opacity:0;visibility:hidden}
+.gate-inner{position:relative;z-index:1;display:grid;gap:clamp(1rem,3vw,1.6rem);justify-items:center;max-width:34rem}
+.gate-eyebrow{
+  font-size:var(--step--1);letter-spacing:.42em;text-transform:uppercase;
+  color:var(--blush);padding-left:.42em;
+}
+.gate-name{
+  font-family:"Bodoni Moda",Didot,"Times New Roman",serif;
+  font-size:var(--step-3);font-weight:400;line-height:.95;margin:0;
+  letter-spacing:.02em;
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.gate-sub{
+  font-family:"Bodoni Moda",serif;font-style:italic;font-size:var(--step-1);
+  color:var(--blush-soft);margin:0;
+}
+.gate-btn{
+  margin-top:.4rem;
+  font-family:"Jost",sans-serif;font-size:var(--step--1);letter-spacing:.3em;text-transform:uppercase;
+  padding:1.05em 2.3em .95em;padding-left:2.6em;
+  border-radius:999px;border:1px solid var(--line-strong);
+  background:linear-gradient(180deg, rgba(240,188,198,.18), rgba(240,188,198,.05));
+  color:var(--ink);cursor:pointer;
+  backdrop-filter:blur(6px);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+  box-shadow:0 0 0 rgba(240,188,198,0);
+}
+.gate-btn:hover{transform:translateY(-2px);border-color:var(--blush);box-shadow:0 12px 40px rgba(240,188,198,.22)}
+.gate-note{font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:var(--silver-dim)}
+
+/* ---------- estructura ---------- */
+main{position:relative;z-index:3;display:block}
+.wrap{width:var(--col);margin-inline:auto}
+section{position:relative}
+.block{padding-block:clamp(4rem,13vw,8.5rem)}
+
+.eyebrow{
+  font-size:var(--step--1);letter-spacing:.42em;text-transform:uppercase;
+  color:var(--blush-deep);padding-left:.42em;margin:0 0 1.1rem;
+  display:flex;align-items:center;gap:1rem;justify-content:center;
+}
+.eyebrow::before,.eyebrow::after{content:"";height:1px;flex:1;max-width:3.5rem;background:linear-gradient(90deg,transparent,var(--line))}
+
+h2.title{
+  font-family:"Bodoni Moda",Didot,serif;font-weight:400;
+  font-size:var(--step-2);line-height:1.12;margin:0 0 1.4rem;
+  text-wrap:balance;letter-spacing:.01em;
+}
+.lede{color:var(--ink-soft);margin:0 auto;max-width:34rem;text-wrap:pretty}
+.center{text-align:center}
+
+/* ---------- héroe ---------- */
+.hero{
+  position:relative;min-height:100svh;
+  display:grid;grid-template-rows:1fr auto auto;
+  isolation:isolate;overflow:hidden;
+}
+.hero-stage{position:absolute;inset:0;z-index:-3}
+.hero-stage figure{
+  position:absolute;inset:0;margin:0;opacity:0;
+  background-size:cover;background-position:center 22%;
+  transform:scale(1.08);
+  transition:opacity 2.2s ease;
+  animation:drift 18s ease-in-out infinite alternate;
+}
+.hero-stage figure.on{opacity:1}
+@keyframes drift{from{transform:scale(1.06)}to{transform:scale(1.15)}}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    linear-gradient(180deg, rgba(12,7,16,.55) 0%, rgba(12,7,16,.08) 20%, rgba(16,8,14,.22) 40%, rgba(18,9,15,.62) 58%, rgba(15,8,13,.90) 74%, rgba(12,7,16,.98) 88%, var(--ground) 100%),
+    radial-gradient(85% 48% at 50% 2%, rgba(255,205,215,.30), rgba(240,188,198,0) 62%),
+    linear-gradient(180deg, rgba(96,40,64,.50) 0%, rgba(70,29,48,.32) 30%, rgba(50,21,35,.16) 52%, rgba(12,7,16,0) 74%),
+    radial-gradient(70% 40% at 50% 100%, rgba(201,124,142,.35), rgba(201,124,142,0) 70%);
+}
+/* haces de luz de la esfera */
+.rays{
+  position:absolute;inset:-30% -50%;z-index:-1;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg at 50% 14%,
+    rgba(240,188,198,.13) 0deg 2.4deg, rgba(240,188,198,0) 2.4deg 11deg,
+    rgba(220,223,229,.09) 11deg 13deg, rgba(220,223,229,0) 13deg 24deg);
+  mix-blend-mode:screen;opacity:.6;
+  animation:rot 52s linear infinite;
+  -webkit-mask-image:radial-gradient(60% 70% at 50% 12%, #000 0%, transparent 78%);
+  mask-image:radial-gradient(60% 70% at 50% 12%, #000 0%, transparent 78%);
+}
+@keyframes rot{to{transform:rotate(360deg)}}
+.hero-body{
+  position:relative;z-index:2;
+  align-self:end;text-align:center;padding:var(--pad);
+  display:grid;gap:clamp(.7rem,2.2vw,1.15rem);justify-items:center;
+}
+.hero-kicker{
+  font-size:var(--step--1);letter-spacing:.5em;text-transform:uppercase;
+  color:var(--blush-soft);padding-left:.5em;
+  text-shadow:0 2px 18px rgba(12,7,16,.9);
+}
+.hero-name{
+  font-family:"Bodoni Moda",Didot,serif;font-weight:400;
+  font-size:var(--step-4);line-height:.86;margin:0;letter-spacing:-.005em;
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 12px rgba(12,7,16,.75)) drop-shadow(0 8px 44px rgba(240,188,198,.35));
+}
+.hero-rule{display:flex;align-items:center;gap:.9rem;color:var(--blush);font-size:var(--step--1);letter-spacing:.3em;text-transform:uppercase;text-shadow:0 2px 14px rgba(12,7,16,.9)}
+.hero-rule::before,.hero-rule::after{content:"";height:1px;width:clamp(28px,9vw,64px);background:linear-gradient(90deg,transparent,var(--blush))}
+.hero-rule::after{background:linear-gradient(90deg,var(--blush),transparent)}
+.hero-date{
+  font-family:"Bodoni Moda",serif;font-style:italic;font-size:var(--step-1);
+  color:var(--ink);margin:0;text-shadow:0 2px 16px rgba(12,7,16,.9);
+}
+.scroll-cue{
+  position:relative;z-index:2;
+  justify-self:center;padding-bottom:clamp(1.5rem,5vw,2.5rem);
+  display:grid;gap:.6rem;justify-items:center;
+  font-size:.66rem;letter-spacing:.35em;text-transform:uppercase;color:var(--silver-dim);
+}
+.scroll-cue span{width:1px;height:44px;background:linear-gradient(180deg,var(--blush),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
+
+/* ---------- cuenta regresiva ---------- */
+.count{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(.4rem,2vw,1rem);margin-top:clamp(1.6rem,5vw,2.6rem);
+}
+.count div{
+  padding:clamp(.9rem,3vw,1.4rem) .3rem;
+  border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(180deg, rgba(240,188,198,.07), rgba(255,255,255,.015));
+  display:grid;gap:.3rem;
+}
+.count b{
+  font-family:"Bodoni Moda",Didot,serif;font-weight:400;
+  font-size:clamp(1.7rem,7vw,2.9rem);line-height:1;
+  font-variant-numeric:tabular-nums;
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.count i{
+  font-style:normal;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--blush-deep);padding-left:.24em;
+}
+
+/* ---------- pista de baile (divisor) ---------- */
+.floor{
+  height:clamp(46px,11vw,78px);width:100%;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:2px;padding:2px;
+  border-block:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+}
+@media(min-width:720px){.floor{grid-template-columns:repeat(24,1fr)}}
+.floor i{display:block;border-radius:2px;background:rgba(240,188,198,.06);animation:tile 4.6s ease-in-out infinite}
+@keyframes tile{
+  0%,100%{background:rgba(240,188,198,.05)}
+  22%{background:rgba(240,188,198,.38);box-shadow:0 0 18px rgba(240,188,198,.22)}
+  48%{background:rgba(220,223,229,.26)}
+  70%{background:rgba(201,124,142,.20)}
+}
+
+/* ---------- carrusel ---------- */
+.gal{position:relative;width:100%;overflow:hidden;background:#0A0509}
+.gal-frame{position:relative;aspect-ratio:3/4;max-height:82svh;margin-inline:auto;width:min(100%,var(--col))}
+@media(min-width:720px){.gal-frame{aspect-ratio:4/5;width:min(100% - var(--pad)*2,760px)}}
+.gal-frame img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.04);
+  transition:opacity 1.1s ease, transform 6s ease;
+  border-radius:4px;
+}
+.gal-frame img.on{opacity:1;transform:scale(1)}
+.gal-glow{
+  position:absolute;inset:0;pointer-events:none;border-radius:4px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.16),
+    inset 0 0 0 6px rgba(12,7,16,.55),
+    inset 0 0 0 7px var(--line),
+    inset 0 -90px 100px -50px rgba(12,7,16,.8),
+    0 0 90px rgba(240,188,198,.16);
+}
+.dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
+.dots button{
+  width:7px;height:7px;padding:0;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(220,223,229,.28);transition:transform .3s, background .3s;
+}
+.dots button[aria-current="true"]{background:var(--blush);transform:scale(1.5)}
+
+/* ---------- tarjetas de lugar ---------- */
+.venues{display:grid;gap:clamp(1rem,3vw,1.5rem)}
+@media(min-width:680px){.venues{grid-template-columns:1fr 1fr}}
+.venue{
+  padding:clamp(1.6rem,5vw,2.2rem);border-radius:18px;
+  border:1px solid var(--line);
+  background:linear-gradient(170deg, rgba(240,188,198,.09), rgba(255,255,255,.02) 55%);
+  display:grid;gap:.55rem;justify-items:center;text-align:center;
+  position:relative;overflow:hidden;
+}
+.venue::before{
+  content:"";position:absolute;top:-40%;left:-30%;width:70%;height:180%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.09),transparent);
+  transform:rotate(18deg) translateX(-120%);transition:transform 1.1s ease;
+}
+.venue:hover::before{transform:rotate(18deg) translateX(320%)}
+.venue-kind{font-size:.64rem;letter-spacing:.34em;text-transform:uppercase;color:var(--blush-deep);padding-left:.34em}
+.venue-time{
+  font-family:"Bodoni Moda",Didot,serif;font-size:clamp(1.9rem,7vw,2.6rem);line-height:1;margin:.2rem 0;
+  font-variant-numeric:tabular-nums;
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.venue-name{font-family:"Bodoni Moda",serif;font-style:italic;font-size:var(--step-1);color:var(--ink);margin:0}
+.venue-note{font-size:var(--step--1);color:var(--silver-dim);letter-spacing:.04em}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-top:.9rem;padding:.85em 1.6em .78em;
+  font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;padding-left:1.84em;
+  border-radius:999px;border:1px solid var(--line-strong);
+  background:rgba(255,255,255,.04);color:var(--ink);text-decoration:none;
+  transition:background .3s, border-color .3s, transform .3s;
+}
+.btn:hover{background:rgba(240,188,198,.16);border-color:var(--blush);transform:translateY(-2px)}
+.btn svg{width:14px;height:14px;flex:none}
+
+.btn-xl{
+  font-size:.76rem;padding:1.15em 2.4em 1.05em;padding-left:2.64em;
+  background:linear-gradient(180deg,var(--blush),var(--blush-deep));
+  color:#1A0A11;border-color:transparent;font-weight:500;
+  box-shadow:0 14px 40px rgba(240,188,198,.22);
+}
+.btn-xl:hover{background:linear-gradient(180deg,#FFD5DD,var(--blush));color:#1A0A11;transform:translateY(-3px)}
+.btn-xl[aria-disabled="true"]{opacity:.45;pointer-events:none}
+
+/* ---------- detalles ---------- */
+.detail{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding-block:clamp(2rem,7vw,3rem);text-align:center;
+  display:grid;gap:.5rem;justify-items:center;
+}
+.detail .big{
+  font-family:"Bodoni Moda",Didot,serif;font-size:var(--step-2);
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+.quote{
+  font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;
+  font-size:var(--step-1);line-height:1.55;color:var(--blush-soft);
+  text-align:center;text-wrap:balance;margin:0;
+}
+
+/* ---------- pie ---------- */
+footer{
+  position:relative;z-index:3;text-align:center;
+  padding:clamp(3rem,10vw,5rem) var(--pad) clamp(4rem,10vw,5rem);
+  border-top:1px solid var(--line);
+  display:grid;gap:1.2rem;justify-items:center;
+}
+.foot-name{
+  font-family:"Bodoni Moda",Didot,serif;font-size:var(--step-2);letter-spacing:.06em;
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.foot-note{font-size:var(--step--1);letter-spacing:.24em;text-transform:uppercase;color:var(--silver-dim);padding-left:.24em}
+
+/* ---------- botón de música ---------- */
+#music{
+  position:fixed;right:clamp(.9rem,3vw,1.6rem);bottom:clamp(.9rem,3vw,1.6rem);z-index:50;
+  width:52px;height:52px;border-radius:50%;cursor:pointer;
+  border:1px solid var(--line-strong);
+  background:radial-gradient(circle at 32% 28%, #FFF6F8 0%, #F0CBD3 20%, #B7BEC7 52%, #4A3A44 100%);
+  box-shadow:0 8px 30px rgba(0,0,0,.5), 0 0 22px var(--blush-glow);
+  display:grid;place-items:center;
+  transition:transform .3s, box-shadow .3s;
+}
+#music:hover{transform:scale(1.07)}
+#music .bars{display:flex;gap:2px;align-items:flex-end;height:15px;mix-blend-mode:multiply}
+#music .bars i{width:2.5px;background:#2A1B25;height:5px;border-radius:1px}
+#music.playing .bars i{animation:eq .9s ease-in-out infinite}
+#music.playing .bars i:nth-child(2){animation-delay:.15s}
+#music.playing .bars i:nth-child(3){animation-delay:.3s}
+#music.playing .bars i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:4px}50%{height:15px}}
+#music .label{
+  position:absolute;right:60px;white-space:nowrap;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+#music:hover .label{opacity:1}
+
+/* ---------- revelado al hacer scroll ---------- */
+.rise{opacity:0;transform:translateY(26px);transition:opacity 1s ease, transform 1s cubic-bezier(.2,.8,.2,1)}
+.rise.seen{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+
+<div id="ambient"></div>
+<canvas id="specks"></canvas>
+<div id="grain"></div>
+
+<div id="gate">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="gate-inner">
+    <div class="ball-wrap"><span class="ball-hang"></span><div class="ball" style="--d:clamp(74px,20vw,110px)"></div></div>
+    <p class="gate-eyebrow">26 · 09 · 2026</p>
+    <h1 class="gate-name">Miranda</h1>
+    <p class="gate-sub">Mis XV Años</p>
+    <button class="gate-btn" id="enter">Abrir invitación</button>
+    <p class="gate-note">Sube el volumen ✦ hay música</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- HÉROE -->
+  <section class="hero">
+    <div class="rays" aria-hidden="true"></div>
+    <div class="hero-stage" id="stage">
+      <figure class="on" style="background-image:url(assets/img/hero/h6.jpg)"></figure>
+      <figure style="background-image:url(assets/img/hero/h20.jpg)"></figure>
+      <figure style="background-image:url(assets/img/hero/h36.jpg)"></figure>
+      <figure style="background-image:url(assets/img/hero/h28.jpg)"></figure>
+    </div>
+    <div class="hero-body">
+      <p class="hero-kicker">Mis XV Años</p>
+      <h1 class="hero-name">Miranda</h1>
+      <p class="hero-rule">Sábado</p>
+      <p class="hero-date">26 de septiembre de 2026</p>
+    </div>
+    <div class="scroll-cue">Desliza<span></span></div>
+  </section>
+
+  <!-- CUENTA REGRESIVA -->
+  <section class="block">
+    <div class="wrap center rise">
+      <div class="ball-wrap" style="padding-bottom:clamp(1.6rem,5vw,2.4rem)"><span class="ball-hang"></span><div class="ball" style="--d:clamp(56px,14vw,84px)"></div></div>
+      <p class="eyebrow">Falta poco</p>
+      <h2 class="title">La bola de espejos ya está girando</h2>
+      <p class="lede">El conteo termina el 26 de septiembre a las 7:00 de la noche, cuando se abran las puertas de la iglesia.</p>
+      <div class="count" id="count" aria-live="polite">
+        <div><b id="d">00</b><i>Días</i></div>
+        <div><b id="h">00</b><i>Horas</i></div>
+        <div><b id="m">00</b><i>Min</i></div>
+        <div><b id="s">00</b><i>Seg</i></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="floor" id="floor" aria-hidden="true"></div>
+
+  <!-- DEDICATORIA -->
+  <section class="block">
+    <div class="wrap center rise">
+      <p class="eyebrow">Para ti</p>
+      <p class="quote">Hay noches que se guardan enteras en la memoria.<br>Ésta es la mía, y no quiero vivirla sin ti.</p>
+    </div>
+  </section>
+
+  <!-- CARRUSEL -->
+  <section class="gal block" style="padding-top:0">
+    <div class="wrap center rise" style="margin-bottom:clamp(1.6rem,5vw,2.4rem)">
+      <p class="eyebrow">Quince</p>
+      <h2 class="title" style="margin-bottom:0">Así llegué hasta aquí</h2>
+    </div>
+    <div class="gal-frame rise" id="gal">
+      <img class="on" src="assets/img/gal/g2.jpg" alt="Miranda en el puente del lago" width="1200" height="1800" loading="eager" decoding="async">
+      <img src="assets/img/gal/g4.jpg" alt="Miranda recargada en el barandal" width="1200" height="1800" loading="eager" decoding="async">
+      <img src="assets/img/gal/g6.jpg" alt="Miranda caminando por el puente" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g10.jpg" alt="Miranda al atardecer en el puente" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g20.jpg" alt="Miranda contra el cielo azul" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g26.jpg" alt="Miranda a la orilla del lago" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g27.jpg" alt="Retrato de Miranda" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g28.jpg" alt="Miranda frente al lago" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g29.jpg" alt="Miranda a contraluz en el campo" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g30.jpg" alt="Miranda sonriendo" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g31.jpg" alt="Miranda en las escalinatas" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g32.jpg" alt="Miranda sentada en las escalinatas" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g34.jpg" alt="Miranda en las escalinatas al atardecer" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g35.jpg" alt="Miranda sentada en las gradas" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g36.jpg" alt="Miranda en el campo dorado" width="1200" height="1800" loading="lazy" decoding="async">
+      <div class="gal-glow"></div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <!-- LUGARES -->
+  <section class="block">
+    <div class="wrap">
+      <div class="center rise" style="margin-bottom:clamp(2rem,6vw,3rem)">
+        <p class="eyebrow">Dónde y cuándo</p>
+        <h2 class="title">Dos paradas, una sola noche</h2>
+      </div>
+      <div class="venues rise">
+        <article class="venue">
+          <p class="venue-kind">Ceremonia</p>
+          <p class="venue-time">7:00 <span style="font-size:.42em;letter-spacing:.1em">PM</span></p>
+          <h3 class="venue-name">Iglesia San Felipe</h3>
+          <p class="venue-note">Misa de acción de gracias</p>
+          <a class="btn" href="https://maps.app.goo.gl/gi9GJLDaPD9RdFVF6?g_st=aw" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
+        </article>
+        <article class="venue">
+          <p class="venue-kind">Recepción</p>
+          <p class="venue-time">9:00 <span style="font-size:.42em;letter-spacing:.1em">PM</span></p>
+          <h3 class="venue-name">Salón Cantabria</h3>
+          <p class="venue-note">Cena, vals y pista abierta</p>
+          <a class="btn" href="https://maps.app.goo.gl/GwhmPwH1akS4FrVt7?g_st=aw" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VESTIMENTA -->
+  <section class="block" style="padding-block:clamp(1rem,4vw,2rem)">
+    <div class="wrap rise">
+      <div class="detail">
+        <p class="eyebrow" style="margin-bottom:.3rem">Código de vestimenta</p>
+        <p class="big">Formal</p>
+        <p class="lede" style="font-size:var(--step--1);letter-spacing:.04em">Ven listo para la foto y para la pista.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="floor" id="floor2" aria-hidden="true"></div>
+
+  <!-- CONFIRMACIÓN -->
+  <section class="block">
+    <div class="wrap center rise">
+      <p class="eyebrow">Confirma tu lugar</p>
+      <h2 class="title">Guardo un lugar en la pista con tu nombre</h2>
+      <p class="lede">Confírmame por WhatsApp y te mando tu pase digital. Sin pase no hay entrada, así que no lo dejes para el final.</p>
+      <p style="margin-top:clamp(1.6rem,5vw,2.4rem)">
+        <a class="btn btn-xl" id="wa" href="#" target="_blank" rel="noopener" aria-disabled="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4A3.4 3.4 0 0 0 5.9 9c0 1.5 1.1 3 1.2 3.2s2.1 3.3 5.1 4.6a17 17 0 0 0 1.7.6 4 4 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.2-.2-.5-.3ZM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7 3.9Z"/></svg>
+          Confirmar por WhatsApp
+        </a>
+      </p>
+      <p class="foot-note" id="wa-hint" style="margin-top:1.2rem">Falta agregar el número de WhatsApp</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="ball-wrap" style="padding-top:0"><div class="ball" style="--d:clamp(46px,11vw,64px)"></div></div>
+  <p class="foot-name">Miranda</p>
+  <p class="foot-note">26 · 09 · 2026 &nbsp;✦&nbsp; Chihuahua</p>
+</footer>
+
+<button id="music" aria-label="Activar o silenciar la música" aria-pressed="false">
+  <span class="label">Música</span>
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
+<audio id="track" loop preload="auto" ></audio>
+
+<script src="assets/config.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ====== CONFIGURACIÓN ======
+     Si existe assets/config.js manda ese archivo; si no, se usan
+     los valores incrustados aquí abajo.                            */
+  var CFG = window.XV_CONFIG || {};
+  var CONFIG = {
+    /* Número de WhatsApp en formato internacional, sin +, sin espacios.
+       Ejemplo para Chihuahua: "526141234567"                         */
+    whatsapp: CFG.whatsapp || "",
+    mensaje: CFG.mensaje || "¡Hola! Confirmo mi asistencia a los XV años de Miranda ✨"
+  };
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ====== WHATSAPP ====== */
+  var wa = document.getElementById("wa"), hint = document.getElementById("wa-hint");
+  if (CONFIG.whatsapp && /^\d{10,15}$/.test(CONFIG.whatsapp)) {
+    wa.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(CONFIG.mensaje);
+    wa.removeAttribute("aria-disabled");
+    hint.style.display = "none";
+  }
+
+  /* ====== CUENTA REGRESIVA — 26 sep 2026, 7:00 pm (UTC-6) ====== */
+  var target = new Date("2026-09-26T19:00:00-06:00").getTime();
+  var el = { d:document.getElementById("d"), h:document.getElementById("h"), m:document.getElementById("m"), s:document.getElementById("s") };
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function tick(){
+    var left = target - Date.now();
+    if (left <= 0){
+      el.d.textContent = el.h.textContent = el.m.textContent = el.s.textContent = "00";
+      document.querySelector("#count").previousElementSibling.textContent = "¡Hoy es el día!";
+      return;
+    }
+    var s = Math.floor(left/1000);
+    el.d.textContent = pad(Math.floor(s/86400));
+    el.h.textContent = pad(Math.floor(s/3600)%24);
+    el.m.textContent = pad(Math.floor(s/60)%60);
+    el.s.textContent = pad(s%60);
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ====== PISTA DE BAILE ====== */
+  ["floor","floor2"].forEach(function(id){
+    var f = document.getElementById(id); if(!f) return;
+    var n = innerWidth >= 720 ? 24 : 12, html = "";
+    for (var i=0;i<n;i++) html += '<i style="animation-delay:' + (Math.random()*4.6).toFixed(2) + 's"></i>';
+    f.innerHTML = html;
+  });
+
+  /* ====== HÉROE: fotos que cambian ====== */
+  var figs = document.querySelectorAll("#stage figure"), hi = 0;
+  if (figs.length > 1 && !reduce){
+    setInterval(function(){
+      figs[hi].classList.remove("on");
+      hi = (hi + 1) % figs.length;
+      figs[hi].classList.add("on");
+    }, 6500);
+  }
+
+  /* ====== CARRUSEL ====== */
+  var gal = document.getElementById("gal");
+  var pics = gal.querySelectorAll("img");
+  var dots = document.getElementById("dots");
+  var gi = 0, timer = null;
+
+  pics.forEach(function(_, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", "Foto " + (i+1));
+    b.addEventListener("click", function(){ show(i); restart(); });
+    dots.appendChild(b);
+  });
+  var btns = dots.querySelectorAll("button");
+
+  function show(i){
+    pics[gi].classList.remove("on");
+    btns[gi].setAttribute("aria-current","false");
+    gi = (i + pics.length) % pics.length;
+    pics[gi].classList.add("on");
+    btns[gi].setAttribute("aria-current","true");
+  }
+  function restart(){ if(timer) clearInterval(timer); if(!reduce) timer = setInterval(function(){ show(gi+1); }, 4200); }
+  show(0); restart();
+
+  /* deslizar con el dedo */
+  var x0 = null;
+  gal.addEventListener("touchstart", function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  gal.addEventListener("touchend", function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40){ show(gi + (dx < 0 ? 1 : -1)); restart(); }
+    x0 = null;
+  }, {passive:true});
+
+  /* ====== REVELADO ====== */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("seen"); io.unobserve(en.target); } });
+  }, { threshold:.14, rootMargin:"0px 0px -8% 0px" });
+  document.querySelectorAll(".rise").forEach(function(n){ io.observe(n); });
+
+  /* ====== LUCES DE LA ESFERA (canvas) ====== */
+  var cv = document.getElementById("specks"), ctx = cv.getContext("2d"), lights = [], raf = null;
+  var PALETTE = ["240,188,198", "220,223,229", "201,124,142", "255,246,248"];
+  function size(){
+    var r = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.floor(innerWidth * r); cv.height = Math.floor(innerHeight * r);
+    cv.style.width = innerWidth + "px"; cv.style.height = innerHeight + "px";
+    ctx.setTransform(r,0,0,r,0,0);
+  }
+  function seed(){
+    lights = [];
+    var n = innerWidth < 640 ? 26 : 46;
+    for (var i=0;i<n;i++){
+      lights.push({
+        x: Math.random()*innerWidth, y: Math.random()*innerHeight,
+        r: 26 + Math.random()*90,
+        a: .05 + Math.random()*.13,
+        c: PALETTE[(Math.random()*PALETTE.length)|0],
+        vx: (Math.random()-.5)*.16, vy: (Math.random()-.5)*.12,
+        p: Math.random()*Math.PI*2, sp: .004 + Math.random()*.01
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    ctx.globalCompositeOperation = "lighter";
+    for (var i=0;i<lights.length;i++){
+      var l = lights[i];
+      l.x += l.vx; l.y += l.vy; l.p += l.sp;
+      if (l.x < -l.r) l.x = innerWidth + l.r; if (l.x > innerWidth + l.r) l.x = -l.r;
+      if (l.y < -l.r) l.y = innerHeight + l.r; if (l.y > innerHeight + l.r) l.y = -l.r;
+      var a = l.a * (.5 + .5*Math.sin(l.p));
+      var g = ctx.createRadialGradient(l.x, l.y, 0, l.x, l.y, l.r);
+      g.addColorStop(0, "rgba(" + l.c + "," + a.toFixed(3) + ")");
+      g.addColorStop(1, "rgba(" + l.c + ",0)");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(l.x, l.y, l.r, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalCompositeOperation = "source-over";
+    raf = requestAnimationFrame(draw);
+  }
+  size(); seed();
+  if (reduce){ draw(); cancelAnimationFrame(raf); } else { draw(); }
+  var rz;
+  addEventListener("resize", function(){ clearTimeout(rz); rz = setTimeout(function(){ size(); seed(); }, 200); });
+
+  /* ====== MÚSICA ====== */
+  var track = document.getElementById("track"), mBtn = document.getElementById("music");
+  if (CFG.musica) track.setAttribute("src", CFG.musica);
+  var hasTrack = !!track.getAttribute("src");
+  if (!hasTrack) mBtn.style.display = "none";
+  track.addEventListener("error", function(){ hasTrack = false; mBtn.style.display = "none"; });
+
+  function play(){
+    if (!hasTrack) return;
+    track.volume = 0;
+    var p = track.play();
+    if (p && p.catch) p.catch(function(){ mBtn.classList.remove("playing"); mBtn.setAttribute("aria-pressed","false"); });
+    mBtn.classList.add("playing"); mBtn.setAttribute("aria-pressed","true");
+    var v = 0, fade = setInterval(function(){ v = Math.min(.55, v + .04); track.volume = v; if (v >= .55) clearInterval(fade); }, 90);
+  }
+  mBtn.addEventListener("click", function(){
+    if (track.paused) play();
+    else { track.pause(); mBtn.classList.remove("playing"); mBtn.setAttribute("aria-pressed","false"); }
+  });
+
+  /* ====== ENTRAR ====== */
+  document.body.classList.add("locked");
+  document.getElementById("enter").addEventListener("click", function(){
+    document.getElementById("gate").classList.add("gone");
+    document.body.classList.remove("locked");
+    window.scrollTo(0,0);
+    play();
+  });
+})();
+</script>
+
+</body>
+</html>
+
