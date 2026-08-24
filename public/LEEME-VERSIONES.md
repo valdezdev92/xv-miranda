@@ -5,6 +5,7 @@ La portada es `index.html`. Las invitaciones actuales son:
 - `invitacion-clasica.html` — blush y plata, esfera de espejos, tono elegante.
 - `invitacion-gala.html` — más cinematográfica, con las fotos al frente.
 - `invitacion-disco.html` — la más llamativa: neón, confeti, marquesinas y pista de baile.
+- `invitacion-disco-rosa.html` — la misma fiesta en claro: fondo blush y confeti pastel.
 
 Para publicar otra versión:
 

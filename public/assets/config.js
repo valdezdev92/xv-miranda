@@ -16,6 +16,15 @@ window.XV_CONFIG = {
   /* Canción de fondo. Deja el archivo en public/assets/musica/
      y escribe aquí su ruta. Si lo dejas vacío, el botón de
      música no aparece.                                        */
-  musica: ""
+  musica: "",
+
+  /* Nombres de los papás de Miranda, tal como quieres que
+     aparezcan en la invitación. Mientras los dos estén vacíos,
+     la sección de papás no se muestra en ninguna versión.
+     Ejemplo:  mama: "María López",  papa: "Juan Valdez"        */
+  padres: {
+    mama: "",
+    papa: ""
+  }
 
 };

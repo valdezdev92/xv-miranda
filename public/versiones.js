@@ -28,5 +28,13 @@ window.XV_VERSIONES = [
     imagen: "assets/img/hero/h28.jpg",
     alt: "Miranda a la orilla del lago",
     acento: "disco"
+  },
+  {
+    slug: "invitacion-disco-rosa.html",
+    titulo: "La versión disco rosa",
+    descripcion: "La misma fiesta, pero en claro: fondo blush, confeti pastel y todo el movimiento en tonos rosas.",
+    imagen: "assets/img/gal/g34.jpg",
+    alt: "Miranda sentada en las escalinatas al atardecer",
+    acento: "rosa"
   }
 ];
