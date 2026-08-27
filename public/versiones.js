@@ -7,9 +7,9 @@ window.XV_VERSIONES = [
   {
     slug: "invitacion-clasica.html",
     titulo: "La versión clásica",
-    descripcion: "La experiencia original: luces de disco, esfera de espejos y una noche llena de brillo.",
+    descripcion: "Fondo claro y elegante: la foto de la iglesia, los dibujos de vestimenta y las fotos repartidas en tres momentos.",
     imagen: "assets/img/hero/h20.jpg",
-    alt: "Miranda durante la sesión de fotos",
+    alt: "Lisa durante la sesión de fotos",
     acento: "clasica"
   },
   {
