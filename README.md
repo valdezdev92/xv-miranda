@@ -95,12 +95,16 @@ navegadores no permiten reproducir audio antes de esa interacción.
 1. Sube este repositorio a GitHub como **público**.
 2. En Coolify: **+ New** → **Application** → **Public Repository**.
 3. Pega la URL del repo y deja la rama en `main`.
-4. **Build Pack:** `Dockerfile`.
-   - *Dockerfile Location:* `/Dockerfile`
-   - *Base Directory:* `/`
+4. **Build Pack:** cualquiera de las dos funciona.
+   - `Dockerfile` → *Dockerfile Location:* `/Dockerfile`, *Base Directory:* `/`
+   - `Compose` → *Docker compose location:* `/docker-compose.yml`, que
+     construye ese mismo `Dockerfile` y expone el servicio `web`.
 5. **Ports Exposes:** `80`.
 6. En **Domains**, pon el dominio o subdominio (por ejemplo
    `miranda.tudominio.com`) y deja que Coolify genere el certificado.
+   Con el Build Pack `Compose`, el dominio se asigna al servicio `web`
+   en el puerto `80`. **Sin dominio la aplicación se despliega pero no
+   es accesible desde fuera.**
 7. **Deploy**.
 
 Coolify vuelve a desplegar solo con cada `git push` si dejas activado

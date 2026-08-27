@@ -1,0 +1,17 @@
+# Despliegue en Coolify con Build Pack "Compose".
+#
+# Construye la imagen del Dockerfile de este repo (Nginx sirviendo la
+# carpeta public/) y la expone en el puerto 80. El dominio se asigna
+# desde Coolify: aplicación → Domains → servicio "web", puerto 80.
+#
+# Si prefieres cambiar el Build Pack a "Dockerfile" en el panel, este
+# archivo deja de usarse y no estorba.
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    expose:
+      - "80"
