@@ -60,6 +60,25 @@ padres: { mama: "María López", papa: "Juan Valdez" },
 Mientras los dos estén vacíos, la sección de papás no aparece en ninguna
 de las cuatro invitaciones.
 
+La versión clásica (la de **Lisa**) tiene además su propio bloque al final
+de `config.js`, por si sus datos no son los mismos que los de las otras
+tres invitaciones:
+
+```js
+clasica: {
+  padres: { mama: "", papa: "" },   // los papás de Lisa
+  mensaje: "…",                     // texto del WhatsApp
+  whatsapp: "",                     // número propio; vacío usa el de arriba
+  iglesia: "assets/img/iglesia.jpg" // foto de la fachada
+}
+```
+
+### 2 bis. La foto de la iglesia
+
+Copia la foto de la fachada en `public/assets/img/iglesia.jpg`. La versión
+clásica la busca al cargar: mientras no exista, en su lugar se muestra un
+dibujo de la iglesia, así que la página nunca queda con un hueco.
+
 ### 3. La canción
 
 Copia el mp3 en `public/assets/musica/` con el nombre `cancion.mp3`
@@ -124,9 +143,16 @@ cd public && python3 -m http.server 8080
 | Misa | 7:00 pm — Iglesia San Felipe |
 | Recepción | 9:00 pm — Salón Cantabria |
 | Vestimenta | Formal |
+| Confirmar antes del | 18 de septiembre |
 
-Paleta de las versiones clásica y gala: rosa blush `#F0BCC6` · plata `#DCDFE5` ·
-fondo ciruela `#0C0710`, con **Bodoni Moda** (títulos) y **Jost** (texto).
+La versión clásica va en claro: fondo crema `#FDF8F4`, texto ciruela `#3A2430`
+y acentos en blush `#C97C8E` y vino `#9E5468`, con los nombres en un degradado
+de oro rosa. No lleva haces de luz giratorios y las fotos van repartidas en
+tres galerías separadas.
+
+La versión gala conserva la paleta oscura: rosa blush `#F0BCC6` · plata
+`#DCDFE5` · fondo ciruela `#0C0710`. Las dos usan **Bodoni Moda** (títulos)
+y **Jost** (texto).
 
 La versión disco usa su propia paleta de neón: magenta `#FF2E9A` · cyan `#2FE6E0` ·
 oro `#FFC94D` · violeta `#8B5CF6` sobre `#07040F`. La versión disco rosa es la misma
