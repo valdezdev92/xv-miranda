@@ -245,10 +245,10 @@ a{color:inherit}
 @keyframes gate-orbit{to{rotate:1turn}}
 .gate-name{
   font-family:"Bodoni Moda",Didot,"Times New Roman",serif;
-  display:flex;justify-content:center;font-size:clamp(5.4rem,24vw,12rem);font-weight:400;line-height:.74;margin:0;
-  letter-spacing:-.065em;padding-right:.065em;filter:drop-shadow(0 12px 24px rgba(142,43,87,.2));
+  display:flex;justify-content:center;font-size:clamp(5.4rem,24vw,12rem);font-weight:400;line-height:1;margin:-.08em 0 -.06em;
+  letter-spacing:-.065em;padding-right:.065em;overflow:visible;filter:drop-shadow(0 12px 24px rgba(142,43,87,.2));
 }
-.gate-letter{display:inline-block;padding-bottom:.08em;background:linear-gradient(120deg,#7B294A 5%,#E875A4 27%,#9A345B 48%,#F4A2C3 66%,#7B294A 92%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gate-letter-dance 4.6s cubic-bezier(.2,.8,.2,1) infinite,gate-letter-shine 6.5s linear infinite;animation-delay:calc(1.25s + var(--i) * .14s),calc(var(--i) * -.8s)}
+.gate-letter{display:inline-block;line-height:1;padding:.08em 0 .13em;background:linear-gradient(120deg,#7B294A 5%,#E875A4 27%,#9A345B 48%,#F4A2C3 66%,#7B294A 92%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;overflow:visible;animation:gate-letter-dance 4.6s cubic-bezier(.2,.8,.2,1) infinite,gate-letter-shine 6.5s linear infinite;animation-delay:calc(1.25s + var(--i) * .14s),calc(var(--i) * -.8s)}
 @keyframes gate-letter-dance{0%,100%{transform:translateY(0) rotate(0)}12%{transform:translateY(-.08em) rotate(-2deg)}24%{transform:none}}
 @keyframes gate-letter-shine{to{background-position:-250% 0}}
 .gate-sub{
@@ -364,7 +364,7 @@ h2.title{
 }
 .hero-name{
   position:relative;font-family:"Bodoni Moda",Didot,serif;font-weight:400;
-  font-size:clamp(6rem,30vw,13.5rem);line-height:.69;margin:.02em 0 .05em;letter-spacing:-.065em;padding-right:.065em;
+  font-size:clamp(6rem,30vw,13.5rem);line-height:.9;margin:-.08em 0 -.06em;letter-spacing:-.065em;padding:.08em .065em .14em 0;overflow:visible;
   background:linear-gradient(115deg,#742440 4%,#E875A4 25%,#8C2F52 45%,#F4A2C3 64%,#762541 88%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 4px 12px rgba(255,244,247,.95)) drop-shadow(0 12px 24px rgba(112,30,65,.2));
   animation:hero-name-shine 7s linear infinite;
