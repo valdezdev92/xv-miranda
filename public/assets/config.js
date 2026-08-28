@@ -40,8 +40,8 @@ window.XV_CONFIG = {
        papás no se muestra en las versiones de Lisa.
        Ejemplo:  mama: "María López",  papa: "Juan Valdez"      */
     padres: {
-      mama: "",
-      papa: ""
+      mama: "Lizeth Casas",
+      papa: "Adan Andrew"
     },
 
     /* Texto con el que se abre el chat de WhatsApp desde esta
@@ -51,6 +51,12 @@ window.XV_CONFIG = {
     /* Número propio de esta versión. Si lo dejas vacío se usa
        el "whatsapp" de arriba.                                  */
     whatsapp: "",
+
+    /* Canción exclusiva de las versiones de Lisa. Cuando adjuntes
+       el MP3 legal de "Beauty and a Beat", se guarda en la carpeta
+       assets/musica/ y se escribe aquí su ruta. Mientras esté vacío,
+       la clásica conserva la pista Pink Disco incorporada.       */
+    musica: "",
 
     /* Foto de la fachada de la iglesia. Déjalo vacío para usar
        el dibujo incluido. Para usar una foto, guárdala dentro de

@@ -542,18 +542,17 @@ h2.title{
 .parents{
   padding:clamp(1.8rem,6vw,2.6rem) clamp(1.2rem,5vw,2rem);border-radius:18px;
   border:1px solid var(--line);background:var(--card);box-shadow:var(--card-shadow);
-  display:grid;gap:.9rem;justify-items:center;text-align:center;
+  position:relative;isolation:isolate;overflow:hidden;display:grid;gap:1.3rem;justify-items:center;text-align:center;
 }
+.parents::before{content:"";position:absolute;z-index:-1;inset:-60% -15%;opacity:.45;background:conic-gradient(from 25deg,transparent 0 16%,rgba(217,106,135,.22) 20%,transparent 27% 62%,rgba(255,255,255,.88) 66%,transparent 72%);animation:parents-glow 12s ease-in-out infinite alternate}
+@keyframes parents-glow{to{transform:rotate(12deg) scale(1.06)}}
 .parents-list{
-  display:grid;gap:.35rem;margin:0;
-  font-family:"Bodoni Moda",Didot,serif;font-style:italic;
-  font-size:var(--step-1);line-height:1.25;color:var(--ink);
+  display:grid;width:100%;gap:.85rem;margin:0;
 }
-@media(min-width:620px){
-  .parents-list{grid-auto-flow:column;align-items:center;gap:1.4rem}
-  .parents-list::before{content:"✦";color:var(--blush);order:2;font-family:"Jost",sans-serif;font-style:normal;font-size:.6em}
-  .parents-list span:last-child{order:3}
-}
+.parent-entry{display:grid;gap:.25rem;padding:1.15rem 1rem;border:1px solid rgba(150,60,88,.16);border-radius:14px;background:rgba(255,255,255,.58);box-shadow:0 10px 28px rgba(150,60,88,.08);backdrop-filter:blur(7px)}
+.parent-role{color:var(--blush-deep);font-size:.6rem;font-style:normal;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+.parent-name{font-family:"Bodoni Moda",Didot,serif;font-size:clamp(1.65rem,7vw,2.4rem);font-style:italic;font-weight:400;line-height:1.05;color:var(--ink)}
+@media(min-width:620px){.parents-list{grid-template-columns:repeat(2,1fr)}}
 
 /* ---------- vestimenta ---------- */
 .dress{display:grid;gap:clamp(1rem,3vw,1.5rem)}
@@ -1169,13 +1168,24 @@ footer::before{
   /* ====== PAPÁS ======
      La sección solo aparece cuando hay al menos un nombre. */
   var padres = LOCAL.padres || CFG.padres || {};
-  var nombres = [padres.mama, padres.papa].filter(function(n){ return n && String(n).trim(); });
+  var nombres = [
+    { rol:"Papá", nombre:padres.papa },
+    { rol:"Mamá", nombre:padres.mama }
+  ].filter(function(dato){ return dato.nombre && String(dato.nombre).trim(); });
   if (nombres.length){
     var lista = document.getElementById("lista-padres");
-    nombres.forEach(function(n){
-      var s = document.createElement("span");
-      s.textContent = String(n).trim();
-      lista.appendChild(s);
+    nombres.forEach(function(dato){
+      var item = document.createElement("span");
+      var rol = document.createElement("small");
+      var nombre = document.createElement("strong");
+      item.className = "parent-entry";
+      rol.className = "parent-role";
+      nombre.className = "parent-name";
+      rol.textContent = dato.rol;
+      nombre.textContent = String(dato.nombre).trim();
+      item.appendChild(rol);
+      item.appendChild(nombre);
+      lista.appendChild(item);
     });
     document.getElementById("seccion-padres").hidden = false;
   }

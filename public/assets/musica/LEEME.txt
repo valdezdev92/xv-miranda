@@ -7,6 +7,13 @@ original que la versión clásica genera dentro del navegador.
    public/assets/config.js.
 4. Haz commit y push; Coolify vuelve a desplegar solo.
 
+Para usar "Beauty and a Beat" en la versión clásica de Lisa:
+- Adjunta un MP3 que hayas comprado o tengas autorización para usar.
+- Guárdalo como  beauty-and-a-beat.mp3  en esta carpeta.
+- Configura  clasica.musica  como:
+  "assets/musica/beauty-and-a-beat.mp3"
+- Un enlace de Spotify o YouTube no funciona como archivo de fondo directo.
+
 Recomendaciones:
 - 128 kbps mono o estéreo es más que suficiente; el archivo debe pesar poco
   porque se descarga en celulares con datos.
