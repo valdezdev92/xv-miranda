@@ -661,29 +661,6 @@ h2.title{
 }
 .venue-name{font-family:"Bodoni Moda",serif;font-style:italic;font-size:var(--step-1);color:var(--ink);margin:0}
 .venue-note{font-size:var(--step--1);color:var(--silver-dim);letter-spacing:.04em}
-.venue-copy{display:grid;gap:.55rem;justify-items:center;text-align:center}
-.venue.has-backdrop{
-  min-height:500px;padding:clamp(.8rem,2vw,1.1rem);
-  align-content:end;background:#FBEAF1;
-}
-.venue > .venue-backdrop{
-  position:absolute;z-index:0;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center;pointer-events:none;
-}
-.venue.has-backdrop .venue-copy{
-  width:100%;gap:.4rem;padding:clamp(1rem,3vw,1.35rem);border-radius:20px;
-  border:1px solid rgba(255,255,255,.72);
-  background:linear-gradient(150deg,rgba(255,252,253,.87),rgba(255,241,247,.76));
-  box-shadow:0 16px 38px rgba(112,34,67,.17),inset 0 0 0 1px rgba(216,75,135,.07);
-  backdrop-filter:blur(4px);
-}
-.venue.has-backdrop .venue-time{margin:.05rem 0}.venue.has-backdrop .btn{margin-top:.55rem}
-.venue.has-backdrop .venue-copy::after{
-  content:"✦";position:absolute;right:1.1rem;top:-.85rem;
-  color:#C43C76;font-size:1.3rem;text-shadow:0 0 14px rgba(232,92,152,.75);
-  animation:salon-star 2.4s ease-in-out infinite;
-}
-@media(min-width:680px){.venue.has-backdrop{min-height:460px}}
 
 .btn{
   display:inline-flex;align-items:center;gap:.6rem;
@@ -902,13 +879,78 @@ h2.title{
 @keyframes venue-arrive{to{opacity:1;translate:0;rotate:0deg}}
 .venue::after{content:"01";position:absolute;right:.6rem;top:-.5rem;font-family:"Bodoni Moda",serif;font-size:5.5rem;line-height:1;color:rgba(191,55,113,.06)}.venue:nth-child(2)::after{content:"02"}
 .venue > *{position:relative;z-index:1}.venue-kind{display:flex;align-items:center;gap:.55rem}.venue-kind::before{content:"";width:8px;height:8px;border-radius:50%;background:#D94B87;box-shadow:0 0 0 5px rgba(217,75,135,.1);animation:venue-dot 1.5s ease-in-out infinite}.venue:nth-child(2) .venue-kind::before{animation-delay:-.75s}
-.venue.has-backdrop::before{z-index:3;pointer-events:none}.venue.has-backdrop::after{z-index:2;color:rgba(255,255,255,.28);text-shadow:0 2px 16px rgba(128,38,76,.18)}
-.venue > .venue-backdrop{z-index:0;animation:salon-photo 16s ease-in-out infinite alternate}
-@keyframes salon-photo{to{transform:scale(1.06) translateY(-1%);filter:saturate(1.08) brightness(1.03)}}
-@keyframes salon-star{50%{transform:scale(1.55) rotate(45deg);color:#FFF;opacity:.72}}
 @keyframes venue-dot{50%{transform:scale(1.5);background:#FFF;box-shadow:0 0 0 8px rgba(217,75,135,.06),0 0 18px #D94B87}}
 .venue .btn svg{animation:pin-hop 2s ease-in-out infinite}.venue:nth-child(2) .btn svg{animation-delay:-1s}
 @keyframes pin-hop{50%{transform:translateY(-3px) rotate(5deg)}}
+
+/* Salón Cantabria: postal nocturna con luces de pista. */
+.salon-section{
+  isolation:isolate;overflow:hidden;
+  background:linear-gradient(155deg,#FFF8FB 0%,#F9D7E5 46%,#F3B9D1 100%);
+}
+.salon-section::before{
+  content:"";position:absolute;z-index:-2;inset:-20%;
+  background:radial-gradient(circle at 24% 38%,rgba(255,255,255,.95),transparent 23%),radial-gradient(circle at 78% 58%,rgba(205,59,123,.2),transparent 27%);
+  animation:salon-aurora 12s ease-in-out infinite alternate;
+}
+.salon-section::after{
+  content:"";position:absolute;z-index:-1;inset:0;opacity:.24;pointer-events:none;
+  background:radial-gradient(circle,#C53E77 0 1.2px,transparent 1.8px) 0 0/42px 42px;
+  animation:salon-dots 10s linear infinite;
+}
+@keyframes salon-aurora{to{transform:translate3d(4%,-3%,0) scale(1.08)}}
+@keyframes salon-dots{to{background-position:42px -42px}}
+.salon-head .ball{margin:0 auto 1rem;animation:salon-ball 4s ease-in-out infinite}
+@keyframes salon-ball{50%{transform:translateY(-7px) rotate(10deg);filter:drop-shadow(0 16px 18px rgba(139,42,84,.2))}}
+.salon-showcase{margin:clamp(2rem,6vw,3rem) 0 0;display:grid;justify-items:center}
+.salon-media{
+  position:relative;isolation:isolate;width:100%;aspect-ratio:3/2;overflow:hidden;
+  border:1px solid rgba(190,54,112,.2);border-radius:clamp(22px,5vw,32px);
+  background:linear-gradient(145deg,#F8C9DC,#FFF8FB);
+  box-shadow:0 28px 70px rgba(132,38,78,.2),0 0 0 9px rgba(255,255,255,.35);
+  animation:salon-frame 5s ease-in-out infinite;
+}
+@keyframes salon-frame{50%{box-shadow:0 34px 78px rgba(132,38,78,.25),0 0 0 12px rgba(255,255,255,.25)}}
+.salon-background{
+  position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.1);filter:saturate(.92);
+}
+.salon-showcase.seen .salon-background{animation:salon-reveal 1.5s cubic-bezier(.16,.82,.2,1) forwards}
+@keyframes salon-reveal{to{opacity:1;transform:scale(1);filter:saturate(1.05)}}
+.salon-media::before{
+  content:"";position:absolute;z-index:2;inset:-30% -70%;pointer-events:none;
+  background:linear-gradient(112deg,transparent 42%,rgba(255,255,255,.76) 50%,transparent 58%);
+  transform:translateX(-55%);animation:salon-shine 7s ease-in-out infinite;
+}
+@keyframes salon-shine{58%,100%{transform:translateX(55%)}}
+.salon-media::after{
+  content:"";position:absolute;z-index:2;left:7%;right:7%;top:12px;height:5px;
+  background:radial-gradient(circle,#FFF 0 1.5px,#D94B87 1.7px 2.2px,transparent 2.6px) left/18px 5px repeat-x;
+  filter:drop-shadow(0 0 6px rgba(217,75,135,.7));animation:salon-bulbs 1.8s steps(2) infinite;
+}
+@keyframes salon-bulbs{50%{opacity:.42;filter:drop-shadow(0 0 12px #FFF)}}
+.salon-time-badge{
+  position:absolute;z-index:3;right:clamp(.8rem,3vw,1.4rem);bottom:clamp(.8rem,3vw,1.4rem);
+  display:grid;place-items:center;width:clamp(74px,18vw,104px);aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(255,255,255,.7);background:rgba(114,28,65,.68);color:#FFF;
+  box-shadow:0 0 0 7px rgba(255,255,255,.2),0 12px 28px rgba(92,24,54,.25);backdrop-filter:blur(5px);
+  font-family:"Bodoni Moda",serif;font-size:clamp(1.15rem,4vw,1.6rem);line-height:1;text-align:center;
+  animation:salon-time-pulse 2.8s ease-in-out infinite;
+}
+.salon-time-badge small{display:block;margin-top:.25rem;font-family:Montserrat,sans-serif;font-size:.42em;letter-spacing:.18em;text-transform:uppercase}
+@keyframes salon-time-pulse{50%{transform:scale(1.06) rotate(2deg);box-shadow:0 0 0 11px rgba(255,255,255,.12),0 16px 32px rgba(92,24,54,.3)}}
+.salon-details{
+  position:relative;z-index:4;width:min(88%,540px);margin-top:clamp(-1.25rem,-3vw,-.75rem);
+  padding:clamp(1.35rem,4vw,1.9rem);display:grid;justify-items:center;gap:.55rem;text-align:center;
+  border:1px solid rgba(255,255,255,.76);border-radius:24px;
+  background:linear-gradient(150deg,rgba(255,253,254,.94),rgba(255,239,246,.88));
+  box-shadow:0 18px 46px rgba(118,31,69,.18);backdrop-filter:blur(8px);
+}
+.salon-details::before{content:"✦";position:absolute;left:1.1rem;top:-.85rem;color:#C43C76;font-size:1.4rem;text-shadow:0 0 14px #F26BA5;animation:salon-detail-star 2.4s ease-in-out infinite}
+@keyframes salon-detail-star{50%{transform:scale(1.55) rotate(45deg);color:#FFF}}
+.salon-name{margin:0;font-family:"Bodoni Moda",serif;font-size:clamp(2rem,7vw,3.4rem);font-style:italic;line-height:1;color:#6D2343}
+.salon-note{max-width:42ch;color:var(--silver-dim);font-size:var(--step--1);letter-spacing:.04em}
+.salon-details .btn{margin-top:.65rem}
 
 /* Vestimenta: camerino con focos y trazos que se dibujan. */
 .dress-section{isolation:isolate;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.9),rgba(247,207,223,.28) 48%,transparent 76%)}
@@ -1321,19 +1363,43 @@ footer::before{
             Cómo llegar
           </a>
         </article>
-        <article class="venue" id="venue-recepcion">
-          <div class="venue-copy">
-            <p class="venue-kind">Recepción</p>
-            <p class="venue-time">9:00 <span style="font-size:.42em;letter-spacing:.1em">PM</span></p>
-            <h3 class="venue-name">Salón Cantabria</h3>
-            <p class="venue-note">Cena, vals y pista abierta</p>
-            <a class="btn" href="https://maps.app.goo.gl/GwhmPwH1akS4FrVt7?g_st=aw" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Cómo llegar
-            </a>
-          </div>
+        <article class="venue">
+          <p class="venue-kind">Recepción</p>
+          <p class="venue-time">9:00 <span style="font-size:.42em;letter-spacing:.1em">PM</span></p>
+          <h3 class="venue-name">Salón Cantabria</h3>
+          <p class="venue-note">Cena, vals y pista abierta</p>
+          <a class="btn" href="https://maps.app.goo.gl/GwhmPwH1akS4FrVt7?g_st=aw" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- SALÓN CANTABRIA -->
+  <section class="block salon-section">
+    <div class="wrap">
+      <div class="center rise salon-head">
+        <div class="ball" style="--d:clamp(48px,12vw,72px)" aria-hidden="true"></div>
+        <p class="eyebrow">Después de la ceremonia</p>
+        <h2 class="title">Aquí sigue la fiesta</h2>
+        <p class="lede">Nos vemos en el Salón Cantabria para la cena, el vals y una noche completa en la pista.</p>
+      </div>
+      <figure class="salon-showcase rise" id="salon-showcase">
+        <div class="salon-media" id="media-salon">
+          <div class="salon-time-badge" aria-label="Recepción a las nueve de la noche">9:00<small>PM</small></div>
+        </div>
+        <figcaption class="salon-details">
+          <p class="venue-kind">Recepción</p>
+          <h3 class="salon-name">Salón Cantabria</h3>
+          <p class="salon-note">Cena, vals y pista abierta. Prepárate para bailar toda la noche.</p>
+          <a class="btn" href="https://maps.app.goo.gl/GwhmPwH1akS4FrVt7?g_st=aw" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1629,22 +1695,22 @@ footer::before{
     prueba.src = rutaIglesia;
   }
 
-  /* ====== FONDO DEL SALÓN ======
-     Se coloca detrás de la información y conserva las animaciones
-     de entrada, brillo y ubicación de la tarjeta.                */
-  var venueRecepcion = document.getElementById("venue-recepcion");
+  /* ====== SECCIÓN DEL SALÓN ======
+     La postal se carga en su sección propia; el itinerario queda
+     únicamente con sus tarjetas y animaciones.                   */
+  var mediaSalon = document.getElementById("media-salon");
   var rutaSalon = String(LOCAL.salon || "").trim();
-  if (venueRecepcion && rutaSalon){
+  if (mediaSalon && rutaSalon){
     var pruebaSalon = new Image();
     pruebaSalon.onload = function(){
       var imgSalon = document.createElement("img");
-      imgSalon.className = "venue-backdrop";
+      imgSalon.className = "salon-background";
       imgSalon.src = rutaSalon;
       imgSalon.alt = "Bosquejo rosa de la fachada del Salón Cantabria";
       imgSalon.decoding = "async";
       imgSalon.loading = "lazy";
-      venueRecepcion.insertBefore(imgSalon, venueRecepcion.firstChild);
-      venueRecepcion.classList.add("has-backdrop");
+      mediaSalon.insertBefore(imgSalon, mediaSalon.firstChild);
+      mediaSalon.classList.add("has-background");
     };
     pruebaSalon.src = rutaSalon;
   }

@@ -61,8 +61,8 @@ window.XV_CONFIG = {
        encima; déjalo vacío para mostrar únicamente el dibujo.    */
     iglesia: "assets/img/iglesia-san-felipe-bosquejo-rosa.webp",
 
-    /* Imagen de fondo de la tarjeta de recepción. Su información
-       y animaciones permanecen sobre la ilustración.              */
+    /* Imagen de la sección exclusiva del Salón Cantabria. El
+       itinerario se mantiene sin fondos fotográficos.             */
     salon: "assets/img/salon-cantabria-bosquejo-rosa.webp"
   }
 
