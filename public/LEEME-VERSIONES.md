@@ -2,8 +2,8 @@
 
 La portada es `index.html`. Las invitaciones actuales son:
 
-- `invitacion-clasica.html` — la de **Lisa**: fondo claro, blush y oro rosa,
-  foto de la iglesia, dibujos de vestimenta y las fotos en tres galerías.
+- `invitacion-clasica.html` — la de **Lisa**: Pink XV con ribbons de satín,
+  destellos disco, tres galerías y música original incorporada.
 - `invitacion-gala.html` — más cinematográfica, con las fotos al frente.
 - `invitacion-disco.html` — la más llamativa: neón, confeti, marquesinas y pista de baile.
 - `invitacion-disco-rosa.html` — la misma fiesta en claro: fondo blush y confeti pastel.

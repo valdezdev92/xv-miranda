@@ -6,8 +6,8 @@
 window.XV_VERSIONES = [
   {
     slug: "invitacion-clasica.html",
-    titulo: "La versión clásica",
-    descripcion: "Fondo claro y elegante: la foto de la iglesia, los dibujos de vestimenta y las fotos repartidas en tres momentos.",
+    titulo: "La versión clásica Pink XV",
+    descripcion: "Rosa elegante con ribbons de satín, destellos disco, galerías animadas y una pista Pink Disco original.",
     imagen: "assets/img/hero/h20.jpg",
     alt: "Lisa durante la sesión de fotos",
     acento: "clasica"

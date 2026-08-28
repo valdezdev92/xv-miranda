@@ -1,8 +1,11 @@
-Aquí va la canción de la invitación.
+Aquí puedes poner una canción propia para sustituir la pista Pink Disco
+original que la versión clásica genera dentro del navegador.
 
 1. Copia el archivo mp3 en esta misma carpeta.
 2. Nómbralo  cancion.mp3  (o cambia la ruta en public/assets/config.js).
-3. Haz commit y push; Coolify vuelve a desplegar solo.
+3. Escribe "assets/musica/cancion.mp3" en la opción musica de
+   public/assets/config.js.
+4. Haz commit y push; Coolify vuelve a desplegar solo.
 
 Recomendaciones:
 - 128 kbps mono o estéreo es más que suficiente; el archivo debe pesar poco

@@ -14,8 +14,9 @@ window.XV_CONFIG = {
   mensaje: "¡Hola! Confirmo mi asistencia a los XV años de Miranda ✨",
 
   /* Canción de fondo. Deja el archivo en public/assets/musica/
-     y escribe aquí su ruta. Si lo dejas vacío, el botón de
-     música no aparece.                                        */
+     y escribe aquí su ruta. Si lo dejas vacío, la versión
+     clásica usa su pista Pink Disco original incorporada; las
+     demás versiones conservan su comportamiento habitual.     */
   musica: "",
 
   /* Nombres de los papás de Miranda, tal como quieres que
