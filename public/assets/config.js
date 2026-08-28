@@ -51,11 +51,10 @@ window.XV_CONFIG = {
        el "whatsapp" de arriba.                                  */
     whatsapp: "",
 
-    /* Foto de la fachada de la iglesia. Deja el archivo en
-       public/assets/img/ y, si le pones otro nombre, escribe
-       aquí la ruta. Mientras la foto no exista se muestra un
-       dibujo de la iglesia en su lugar.                         */
-    iglesia: "assets/img/iglesia.jpg"
+    /* Foto de la fachada de la iglesia. Déjalo vacío para usar
+       el dibujo incluido. Para usar una foto, guárdala dentro de
+       public/assets/img/ y escribe aquí su ruta.                 */
+    iglesia: ""
   }
 
 };

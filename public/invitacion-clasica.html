@@ -730,9 +730,8 @@ footer{
       </div>
       <figure class="church rise">
         <div class="church-media" id="media-iglesia">
-          <!-- Deja la foto de la fachada en public/assets/img/iglesia.jpg
-               (o cambia la ruta en config.js) y sustituye a este dibujo
-               sola. Mientras no exista, se queda el dibujo. -->
+          <!-- Configura la ruta de la fachada en config.js para sustituir
+               este dibujo. Si la ruta queda vacía, se conserva el dibujo. -->
           <div class="church-draw" id="dibujo-iglesia" aria-hidden="true">
             <svg viewBox="0 0 220 152" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="M110 4v14M103 11h14"/>
@@ -981,12 +980,12 @@ footer{
   }
 
   /* ====== FOTO DE LA IGLESIA ======
-     Se comprueba primero si la foto existe: solo entonces
-     sustituye al dibujo. Así nunca se ve una imagen rota.       */
+     Si se configuró una ruta, se comprueba primero que la foto
+     exista y solo entonces sustituye al dibujo.                 */
   var mediaIglesia  = document.getElementById("media-iglesia");
   var dibujoIglesia = document.getElementById("dibujo-iglesia");
-  var rutaIglesia   = LOCAL.iglesia || "assets/img/iglesia.jpg";
-  if (mediaIglesia && dibujoIglesia){
+  var rutaIglesia   = String(LOCAL.iglesia || "").trim();
+  if (mediaIglesia && dibujoIglesia && rutaIglesia){
     var prueba = new Image();
     prueba.onload = function(){
       var img = document.createElement("img");
