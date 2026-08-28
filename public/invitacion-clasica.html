@@ -1092,6 +1092,32 @@ footer > *{position:relative;z-index:1}
 }
 .final-disco-spark--one{--x:-70px;--y:-46px;--delay:-.4s}.final-disco-spark--two{--x:72px;--y:-18px;--delay:-1.3s}.final-disco-spark--three{--x:54px;--y:66px;--delay:-1.8s}
 @keyframes final-spark{0%,100%{transform:scale(.3) rotate(0);opacity:.18}50%{transform:scale(1.35) rotate(45deg);opacity:1}}
+
+/* Perfil estable para Safari en iPhone/iPad.
+   Conserva giro, balanceo y brillo, pero evita máscaras, mezcla y
+   filtros animados de pantalla completa que agotan el compositor. */
+.ios-safari footer::before{animation:none;transform:none;opacity:.18}
+.ios-safari footer::after{
+  animation:none;opacity:.25;-webkit-mask-image:none;mask-image:none;
+  background-size:92px 92px,78px 78px;
+}
+.ios-safari .final-disco-wrap{animation-duration:7s}
+.ios-safari .final-disco-ball{
+  animation:final-mirror-spin 7s linear infinite;
+  filter:none;box-shadow:0 18px 34px rgba(35,28,38,.32),0 0 28px rgba(255,255,255,.42),inset -12px -14px 28px rgba(20,23,29,.44);
+}
+.ios-safari .final-disco-ball::before{
+  mix-blend-mode:normal;opacity:.54;
+  animation:final-ios-glint 4.8s ease-in-out infinite;
+}
+.ios-safari .final-disco-ball::after{animation:none;transform:none;opacity:.86}
+@keyframes final-ios-glint{0%,100%{background-position:125% 0,0 0,0 0}50%{background-position:-65% 0,0 0,0 0}}
+.ios-safari .final-disco-ray{filter:none;animation:final-ios-ray 5.2s ease-in-out infinite}
+.ios-safari .final-disco-ray--two,.ios-safari .final-disco-ray--three,.ios-safari .final-disco-spark--three{display:none}
+@keyframes final-ios-ray{50%{opacity:.58;transform:rotate(calc(var(--a) + 4deg)) scaleX(1.04)}}
+.ios-safari .sparkle:nth-child(n+9){display:none}
+.ios-safari .ambient-ribbon{animation:none;opacity:.12}
+.ios-safari .foot-name .foot-letter{animation:foot-letter 5.4s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--i) * .16s)}
 .foot-kicker{margin:0;color:var(--blush-deep);font-size:.65rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
 .foot-name{
   display:flex;justify-content:center;margin:.5rem 0 0;font-family:"Bodoni Moda",Didot,serif;
@@ -1699,6 +1725,16 @@ footer > *{position:relative;z-index:1}
   };
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Safari móvil necesita un perfil de composición más ligero en
+     el cierre. ?ios-safe=1 permite comprobarlo también en local. */
+  var navegador = navigator.userAgent || "";
+  var plataforma = navigator.platform || "";
+  var esIOS = /iP(hone|ad|od)/.test(plataforma) || (plataforma === "MacIntel" && navigator.maxTouchPoints > 1);
+  var esSafariIOS = esIOS && /WebKit/i.test(navegador) && !/(CriOS|FxiOS|EdgiOS|OPiOS)/i.test(navegador);
+  if (esSafariIOS || location.search.indexOf("ios-safe=1") !== -1) {
+    document.documentElement.classList.add("ios-safari");
+  }
 
   /* ====== WHATSAPP ====== */
   var wa = document.getElementById("wa");
