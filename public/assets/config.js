@@ -52,11 +52,10 @@ window.XV_CONFIG = {
        el "whatsapp" de arriba.                                  */
     whatsapp: "",
 
-    /* Canción exclusiva de las versiones de Lisa. Cuando adjuntes
-       el MP3 legal de "Beauty and a Beat", se guarda en la carpeta
-       assets/musica/ y se escribe aquí su ruta. Mientras esté vacío,
-       la clásica conserva la pista Pink Disco incorporada.       */
-    musica: "",
+    /* Canción exclusiva de las versiones de Lisa. Si el archivo no
+       puede cargarse, la clásica usa Pink Disco como respaldo.    */
+    musica: "assets/musica/beauty-and-a-beat.mp3",
+    musicaTitulo: "Beauty and a Beat",
 
     /* Foto de la fachada de la iglesia. Déjalo vacío para usar
        el dibujo incluido. Para usar una foto, guárdala dentro de

@@ -1318,21 +1318,38 @@ footer::before{
      descarga música comercial ni necesita recursos externos.   */
   var track = document.getElementById("track");
   var mBtn = document.getElementById("music");
+  var musicLabel = mBtn.querySelector(".label");
   var gateMusicNote = document.getElementById("gate-music-note");
   var musicPath = String(LOCAL.musica || CFG.musica || "").trim();
   if (musicPath) track.setAttribute("src", musicPath);
   var hasTrack = !!track.getAttribute("src");
+  var musicTitle = String(LOCAL.musicaTitulo || CFG.musicaTitulo || (hasTrack ? "Canción de fondo" : "Pink Disco")).trim();
   var AudioEngine = window.AudioContext || window.webkitAudioContext;
   var audioContext = null, master = null, compressor = null, noiseBuffer = null;
   var synthTimer = null, nextStepAt = 0, synthStep = 0, synthPlaying = false, musicPlaying = false;
   var tempo = 116, stepSeconds = 60 / tempo / 4;
 
+  function syncMusicCopy(){
+    musicLabel.textContent = musicTitle;
+    gateMusicNote.textContent = "Sube el volumen ✦ " + (hasTrack ? musicTitle : "Pink Disco original");
+    mBtn.setAttribute("aria-label", (musicPlaying ? "Silenciar " : "Activar ") + musicTitle);
+  }
+
   function setMusicState(playing){
     musicPlaying = playing;
     mBtn.classList.toggle("playing", playing);
     mBtn.setAttribute("aria-pressed", playing ? "true" : "false");
-    mBtn.setAttribute("aria-label", playing ? "Silenciar la música Pink Disco" : "Activar la música Pink Disco");
+    mBtn.setAttribute("aria-label", (playing ? "Silenciar " : "Activar ") + musicTitle);
   }
+
+  function useSynthFallback(){
+    hasTrack = false;
+    musicTitle = "Pink Disco";
+    syncMusicCopy();
+    playSynth();
+  }
+
+  syncMusicCopy();
 
   function initSynth(){
     if (audioContext || !AudioEngine) return !!audioContext;
@@ -1455,13 +1472,17 @@ footer::before{
     track.volume = .52;
     var promise = track.play();
     if (promise && promise.then) {
-      promise.then(function(){ setMusicState(true); }).catch(function(){ hasTrack = false; playSynth(); });
+      promise.then(function(){ setMusicState(true); }).catch(useSynthFallback);
     } else setMusicState(true);
   }
 
   track.addEventListener("error", function(){
-    hasTrack = false;
-    if (musicPlaying) playSynth();
+    if (hasTrack) {
+      hasTrack = false;
+      musicTitle = "Pink Disco";
+      syncMusicCopy();
+      if (musicPlaying) playSynth();
+    }
   });
   mBtn.addEventListener("click", function(){ musicPlaying ? pauseMusic() : playMusic(); });
 
