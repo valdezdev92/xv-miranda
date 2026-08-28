@@ -661,6 +661,29 @@ h2.title{
 }
 .venue-name{font-family:"Bodoni Moda",serif;font-style:italic;font-size:var(--step-1);color:var(--ink);margin:0}
 .venue-note{font-size:var(--step--1);color:var(--silver-dim);letter-spacing:.04em}
+.venue-copy{display:grid;gap:.55rem;justify-items:center;text-align:center}
+.venue.has-backdrop{
+  min-height:500px;padding:clamp(.8rem,2vw,1.1rem);
+  align-content:end;background:#FBEAF1;
+}
+.venue > .venue-backdrop{
+  position:absolute;z-index:0;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;pointer-events:none;
+}
+.venue.has-backdrop .venue-copy{
+  width:100%;gap:.4rem;padding:clamp(1rem,3vw,1.35rem);border-radius:20px;
+  border:1px solid rgba(255,255,255,.72);
+  background:linear-gradient(150deg,rgba(255,252,253,.87),rgba(255,241,247,.76));
+  box-shadow:0 16px 38px rgba(112,34,67,.17),inset 0 0 0 1px rgba(216,75,135,.07);
+  backdrop-filter:blur(4px);
+}
+.venue.has-backdrop .venue-time{margin:.05rem 0}.venue.has-backdrop .btn{margin-top:.55rem}
+.venue.has-backdrop .venue-copy::after{
+  content:"✦";position:absolute;right:1.1rem;top:-.85rem;
+  color:#C43C76;font-size:1.3rem;text-shadow:0 0 14px rgba(232,92,152,.75);
+  animation:salon-star 2.4s ease-in-out infinite;
+}
+@media(min-width:680px){.venue.has-backdrop{min-height:460px}}
 
 .btn{
   display:inline-flex;align-items:center;gap:.6rem;
@@ -879,6 +902,10 @@ h2.title{
 @keyframes venue-arrive{to{opacity:1;translate:0;rotate:0deg}}
 .venue::after{content:"01";position:absolute;right:.6rem;top:-.5rem;font-family:"Bodoni Moda",serif;font-size:5.5rem;line-height:1;color:rgba(191,55,113,.06)}.venue:nth-child(2)::after{content:"02"}
 .venue > *{position:relative;z-index:1}.venue-kind{display:flex;align-items:center;gap:.55rem}.venue-kind::before{content:"";width:8px;height:8px;border-radius:50%;background:#D94B87;box-shadow:0 0 0 5px rgba(217,75,135,.1);animation:venue-dot 1.5s ease-in-out infinite}.venue:nth-child(2) .venue-kind::before{animation-delay:-.75s}
+.venue.has-backdrop::before{z-index:3;pointer-events:none}.venue.has-backdrop::after{z-index:2;color:rgba(255,255,255,.28);text-shadow:0 2px 16px rgba(128,38,76,.18)}
+.venue > .venue-backdrop{z-index:0;animation:salon-photo 16s ease-in-out infinite alternate}
+@keyframes salon-photo{to{transform:scale(1.06) translateY(-1%);filter:saturate(1.08) brightness(1.03)}}
+@keyframes salon-star{50%{transform:scale(1.55) rotate(45deg);color:#FFF;opacity:.72}}
 @keyframes venue-dot{50%{transform:scale(1.5);background:#FFF;box-shadow:0 0 0 8px rgba(217,75,135,.06),0 0 18px #D94B87}}
 .venue .btn svg{animation:pin-hop 2s ease-in-out infinite}.venue:nth-child(2) .btn svg{animation-delay:-1s}
 @keyframes pin-hop{50%{transform:translateY(-3px) rotate(5deg)}}
@@ -1294,15 +1321,17 @@ footer::before{
             Cómo llegar
           </a>
         </article>
-        <article class="venue">
-          <p class="venue-kind">Recepción</p>
-          <p class="venue-time">9:00 <span style="font-size:.42em;letter-spacing:.1em">PM</span></p>
-          <h3 class="venue-name">Salón Cantabria</h3>
-          <p class="venue-note">Cena, vals y pista abierta</p>
-          <a class="btn" href="https://maps.app.goo.gl/GwhmPwH1akS4FrVt7?g_st=aw" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            Cómo llegar
-          </a>
+        <article class="venue" id="venue-recepcion">
+          <div class="venue-copy">
+            <p class="venue-kind">Recepción</p>
+            <p class="venue-time">9:00 <span style="font-size:.42em;letter-spacing:.1em">PM</span></p>
+            <h3 class="venue-name">Salón Cantabria</h3>
+            <p class="venue-note">Cena, vals y pista abierta</p>
+            <a class="btn" href="https://maps.app.goo.gl/GwhmPwH1akS4FrVt7?g_st=aw" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Cómo llegar
+            </a>
+          </div>
         </article>
       </div>
     </div>
@@ -1598,6 +1627,26 @@ footer::before{
       mediaIglesia.classList.add("has-background");
     };
     prueba.src = rutaIglesia;
+  }
+
+  /* ====== FONDO DEL SALÓN ======
+     Se coloca detrás de la información y conserva las animaciones
+     de entrada, brillo y ubicación de la tarjeta.                */
+  var venueRecepcion = document.getElementById("venue-recepcion");
+  var rutaSalon = String(LOCAL.salon || "").trim();
+  if (venueRecepcion && rutaSalon){
+    var pruebaSalon = new Image();
+    pruebaSalon.onload = function(){
+      var imgSalon = document.createElement("img");
+      imgSalon.className = "venue-backdrop";
+      imgSalon.src = rutaSalon;
+      imgSalon.alt = "Bosquejo rosa de la fachada del Salón Cantabria";
+      imgSalon.decoding = "async";
+      imgSalon.loading = "lazy";
+      venueRecepcion.insertBefore(imgSalon, venueRecepcion.firstChild);
+      venueRecepcion.classList.add("has-backdrop");
+    };
+    pruebaSalon.src = rutaSalon;
   }
 
   /* ====== CUENTA REGRESIVA — 26 sep 2026, 7:00 pm (UTC-6) ====== */

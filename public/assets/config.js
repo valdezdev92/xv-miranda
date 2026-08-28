@@ -59,7 +59,11 @@ window.XV_CONFIG = {
 
     /* Imagen de fondo de la iglesia. El dibujo animado se conserva
        encima; déjalo vacío para mostrar únicamente el dibujo.    */
-    iglesia: "assets/img/iglesia-san-felipe-bosquejo-rosa.webp"
+    iglesia: "assets/img/iglesia-san-felipe-bosquejo-rosa.webp",
+
+    /* Imagen de fondo de la tarjeta de recepción. Su información
+       y animaciones permanecen sobre la ilustración.              */
+    salon: "assets/img/salon-cantabria-bosquejo-rosa.webp"
   }
 
 };
