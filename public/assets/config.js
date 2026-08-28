@@ -48,9 +48,16 @@ window.XV_CONFIG = {
        versión. Si lo dejas vacío se usa el de Lisa por defecto. */
     mensaje: "¡Hola! Confirmo mi asistencia a los XV años de Lisa ✨",
 
-    /* Número propio de esta versión. Si lo dejas vacío se usa
-       el "whatsapp" de arriba.                                  */
-    whatsapp: "",
+    /* Contacto principal de esta versión, también utilizado por
+       la versión vintage que admite un solo WhatsApp.            */
+    whatsapp: "526143247107",
+
+    /* Opciones de confirmación que aparecen en la versión clásica.
+       Los números se guardan en formato internacional sin “+”.   */
+    confirmaciones: [
+      { nombre: "Lisa", whatsapp: "526143247107" },
+      { nombre: "Lizeth Casas", whatsapp: "526144083463" }
+    ],
 
     /* Canción exclusiva de las versiones de Lisa. Si el archivo no
        puede cargarse, la clásica usa Pink Disco como respaldo.    */
