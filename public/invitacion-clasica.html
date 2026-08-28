@@ -769,6 +769,108 @@ h2.title{
 }
 .note-text{font-size:var(--step--1);color:var(--silver-dim);margin:0;text-wrap:pretty}
 
+/* ---------- escenas con movimiento: una variación por sección ---------- */
+/* Dedicatoria: papel luminoso y listones líquidos. */
+.message-section{isolation:isolate;overflow:hidden;background:linear-gradient(160deg,#FFF9FC,#FDE8F0 55%,#FFF5F9)}
+.message-section::before{content:"";position:absolute;z-index:-2;inset:-45%;opacity:.36;background:conic-gradient(from 10deg,transparent 0 15%,rgba(227,76,143,.2) 18% 21%,transparent 24% 54%,rgba(255,255,255,.95) 58% 63%,transparent 67%);animation:message-light 22s linear infinite}
+@keyframes message-light{to{transform:rotate(1turn)}}
+.message-ribbons{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.message-ribbons span{position:absolute;width:clamp(170px,36vw,360px);height:64px;border:11px solid rgba(216,75,137,.25);border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;filter:drop-shadow(0 9px 14px rgba(145,41,87,.12));animation:message-ribbon 8s ease-in-out infinite alternate}
+.message-ribbons span:first-child{left:-75px;top:16%;rotate:-24deg}.message-ribbons span:last-child{right:-95px;bottom:13%;rotate:158deg;animation-delay:-4s}
+@keyframes message-ribbon{to{transform:translate(24px,-18px) rotate(8deg) scale(1.05)}}
+.message-card{position:relative;padding:clamp(3rem,9vw,6rem) clamp(1.3rem,6vw,4rem);border:1px solid rgba(255,255,255,.88);border-radius:clamp(28px,5vw,44px);background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(255,235,244,.68));box-shadow:0 25px 70px rgba(140,43,85,.14),inset 0 0 0 1px rgba(193,60,115,.08);backdrop-filter:blur(9px);overflow:hidden}
+.message-card::before{content:"“";position:absolute;left:clamp(.8rem,4vw,2rem);top:clamp(.1rem,1vw,.7rem);font-family:"Bodoni Moda",serif;font-size:clamp(7rem,25vw,13rem);line-height:1;color:rgba(209,66,128,.1);animation:quote-breathe 4.8s ease-in-out infinite}
+.message-card::after{content:"";position:absolute;inset:-30% -70%;pointer-events:none;background:linear-gradient(110deg,transparent 42%,rgba(255,255,255,.82) 50%,transparent 58%);transform:translateX(-55%);animation:message-shine 7s ease-in-out infinite}
+@keyframes quote-breathe{50%{transform:scale(1.08) rotate(-4deg);color:rgba(209,66,128,.17)}}
+@keyframes message-shine{55%,100%{transform:translateX(55%)}}
+.message-spark{position:relative;z-index:1;display:inline-grid;place-items:center;width:42px;height:42px;margin-bottom:1rem;border-radius:50%;background:#A83266;color:#FFF;box-shadow:0 0 0 8px rgba(218,75,137,.1),0 10px 28px rgba(127,36,77,.18);animation:message-spark 2.8s ease-in-out infinite}
+@keyframes message-spark{50%{transform:rotate(45deg) scale(1.08);box-shadow:0 0 0 13px rgba(218,75,137,.05),0 10px 34px rgba(127,36,77,.25)}}
+.message-card .eyebrow,.message-quote{position:relative;z-index:1}
+.message-card.seen .message-quote{animation:quote-arrive 1.2s cubic-bezier(.16,.8,.2,1) both .18s}
+@keyframes quote-arrive{from{opacity:0;filter:blur(7px);letter-spacing:.025em}to{opacity:1;filter:none;letter-spacing:0}}
+
+/* Ceremonia: luz que se abre y dibujo trazado. */
+.ceremony-section{isolation:isolate;overflow:hidden;background:radial-gradient(70% 55% at 50% 65%,rgba(242,169,199,.2),transparent 75%)}
+.ceremony-rays{position:absolute;z-index:-1;left:50%;top:0;width:max(720px,90vw);aspect-ratio:1;translate:-50% -42%;opacity:.44;background:conic-gradient(from -20deg,transparent 0 13%,rgba(223,75,140,.21) 16% 20%,transparent 23% 40%,rgba(255,255,255,.95) 43% 48%,transparent 52% 71%,rgba(217,106,135,.18) 74% 79%,transparent 82%);transform-origin:50% 50%;animation:ceremony-rays 14s ease-in-out infinite alternate}
+@keyframes ceremony-rays{to{transform:rotate(13deg) scale(1.08)}}
+.ceremony-head .title{position:relative}.ceremony-head .title::after{content:"";display:block;width:clamp(60px,16vw,110px);height:3px;margin:.8rem auto 0;border-radius:99px;background:linear-gradient(90deg,transparent,#D94B87,transparent);animation:ceremony-rule 2.8s ease-in-out infinite}
+@keyframes ceremony-rule{50%{transform:scaleX(1.5);filter:drop-shadow(0 0 7px #E85C98)}}
+.church{position:relative}.church::before,.church::after{content:"✦";position:absolute;z-index:3;color:#C63E76;text-shadow:0 0 18px #F36CA6;animation:church-star 2.5s ease-in-out infinite}.church::before{left:-.4rem;top:15%;font-size:1.5rem}.church::after{right:-.2rem;bottom:18%;font-size:2rem;animation-delay:-1.2s}
+@keyframes church-star{50%{transform:scale(1.6) rotate(45deg);color:#FFF;opacity:.55}}
+.church-media{position:relative;isolation:isolate;border-radius:26px;box-shadow:0 24px 60px rgba(144,43,87,.17),0 0 0 8px rgba(217,106,135,.05)}
+.church-media::before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(112deg,transparent 26%,rgba(255,255,255,.82) 47%,transparent 65%);transform:translateX(-130%);animation:church-shine 6.5s ease-in-out infinite}
+.church-media::after{content:"";position:absolute;z-index:2;left:10%;right:10%;top:11px;height:4px;background:radial-gradient(circle,#D94B87 0 1.4px,transparent 2px) left/14px 4px repeat-x;opacity:.65}
+@keyframes church-shine{58%,100%{transform:translateX(130%)}}
+.church.seen .church-draw path,.church.seen .church-draw circle{stroke-dasharray:620;stroke-dashoffset:620;animation:church-line 2.8s cubic-bezier(.3,.7,.2,1) forwards;animation-delay:.12s}
+.church.seen .church-draw path:nth-child(2n){animation-delay:.28s}.church.seen .church-draw path:nth-child(3n){animation-delay:.44s}
+@keyframes church-line{to{stroke-dashoffset:0}}
+.church-media img{animation:church-photo 14s ease-in-out infinite alternate}
+@keyframes church-photo{to{transform:scale(1.055);filter:saturate(1.08)}}
+.church figcaption{display:inline-flex;align-items:center;gap:.65rem;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid var(--line);box-shadow:0 8px 22px rgba(142,43,87,.08)}
+.church figcaption::before{content:"";width:7px;height:7px;border-radius:50%;background:#D94B87;box-shadow:0 0 0 5px rgba(217,75,135,.12),0 0 15px #D94B87;animation:church-dot 1.6s ease-in-out infinite}
+@keyframes church-dot{50%{transform:scale(1.6);background:#FFF}}
+
+/* Ubicaciones: ruta luminosa y pases de acceso. */
+.venues-section{isolation:isolate;overflow:hidden;background:linear-gradient(180deg,transparent,rgba(239,194,210,.16),transparent)}
+.venues-section::before{content:"";position:absolute;z-index:-1;inset:8% 0;opacity:.22;background:repeating-linear-gradient(115deg,transparent 0 54px,rgba(198,61,120,.16) 55px 57px,transparent 58px 108px);animation:route-slide 12s linear infinite}
+@keyframes route-slide{to{background-position:220px 0}}
+.venues{position:relative}.venues::before{content:"";position:absolute;left:50%;top:12%;bottom:12%;width:2px;translate:-50% 0;background:linear-gradient(#D94B87,#F5B3CF,#9E315F);box-shadow:0 0 14px rgba(217,75,135,.45);animation:route-pulse 2s ease-in-out infinite}
+@keyframes route-pulse{50%{filter:brightness(1.35);transform:scaleY(.88)}}
+.venue{opacity:0;translate:0 28px;rotate:-1.2deg;border-radius:24px;box-shadow:0 18px 42px rgba(142,43,87,.13),inset 0 0 0 1px rgba(255,255,255,.62)}
+.venue:nth-child(2){rotate:1.2deg}.venues.seen .venue{animation:venue-arrive .9s cubic-bezier(.16,.82,.2,1) forwards}.venues.seen .venue:nth-child(2){animation-delay:.18s}
+@keyframes venue-arrive{to{opacity:1;translate:0;rotate:0deg}}
+.venue::after{content:"01";position:absolute;right:.6rem;top:-.5rem;font-family:"Bodoni Moda",serif;font-size:5.5rem;line-height:1;color:rgba(191,55,113,.06)}.venue:nth-child(2)::after{content:"02"}
+.venue > *{position:relative;z-index:1}.venue-kind{display:flex;align-items:center;gap:.55rem}.venue-kind::before{content:"";width:8px;height:8px;border-radius:50%;background:#D94B87;box-shadow:0 0 0 5px rgba(217,75,135,.1);animation:venue-dot 1.5s ease-in-out infinite}.venue:nth-child(2) .venue-kind::before{animation-delay:-.75s}
+@keyframes venue-dot{50%{transform:scale(1.5);background:#FFF;box-shadow:0 0 0 8px rgba(217,75,135,.06),0 0 18px #D94B87}}
+.venue .btn svg{animation:pin-hop 2s ease-in-out infinite}.venue:nth-child(2) .btn svg{animation-delay:-1s}
+@keyframes pin-hop{50%{transform:translateY(-3px) rotate(5deg)}}
+
+/* Vestimenta: camerino con focos y trazos que se dibujan. */
+.dress-section{isolation:isolate;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.9),rgba(247,207,223,.28) 48%,transparent 76%)}
+.dress-section::before{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:32%;opacity:.35;background:linear-gradient(135deg,rgba(193,55,113,.12) 25%,transparent 25%) 0 0/32px 32px,linear-gradient(225deg,rgba(193,55,113,.12) 25%,transparent 25%) 0 0/32px 32px;animation:dress-floor 9s linear infinite}
+@keyframes dress-floor{to{background-position:64px 0,-64px 0}}
+.dress-card{position:relative;overflow:hidden;border-radius:26px;padding-top:clamp(2rem,6vw,2.8rem);box-shadow:0 20px 48px rgba(142,43,87,.14),inset 0 0 0 1px rgba(255,255,255,.72)}
+.dress-card::before{content:"";position:absolute;inset:9px;border-radius:18px;pointer-events:none;background:radial-gradient(circle,#D94B87 0 1.45px,transparent 2px) top left/15px 5px repeat-x,radial-gradient(circle,#D94B87 0 1.45px,transparent 2px) bottom left/15px 5px repeat-x;opacity:.55;animation:mirror-bulbs 2.2s steps(2) infinite}
+.dress-card:nth-child(2)::before{animation-delay:-1.1s}.dress-card::after{content:"";position:absolute;inset:-30% -75%;pointer-events:none;background:linear-gradient(112deg,transparent 43%,rgba(255,255,255,.78) 50%,transparent 57%);transform:translateX(-55%);animation:dress-glint 7.2s ease-in-out infinite}.dress-card:nth-child(2)::after{animation-delay:-3.4s}
+@keyframes mirror-bulbs{50%{filter:brightness(1.8);opacity:.85}}@keyframes dress-glint{58%,100%{transform:translateX(55%)}}
+.dress.seen .dress-art path{stroke-dasharray:480;stroke-dashoffset:480;animation:outfit-line 2.2s ease forwards}.dress.seen .dress-card:nth-child(2) .dress-art path{animation-delay:.18s}
+@keyframes outfit-line{to{stroke-dashoffset:0}}
+.dress-art{position:relative;z-index:1;transform-origin:50% 10%;animation:outfit-groove 4.2s ease-in-out infinite}.dress-card:nth-child(2) .dress-art{animation-name:dress-sway;animation-duration:4.8s}
+@keyframes outfit-groove{50%{transform:translateY(-5px) rotate(-2deg)}}@keyframes dress-sway{50%{transform:translateY(-4px) rotate(2.5deg)}}
+.dress-card > :not(svg){position:relative;z-index:1}
+
+/* Detalles: stickers que caen sobre la mesa de la fiesta. */
+.details-section{isolation:isolate;overflow:hidden;background:linear-gradient(145deg,#7A244C 0%,#B83B70 46%,#E66C9E 100%)}
+.details-section::before{content:"";position:absolute;inset:0;opacity:.18;background:radial-gradient(circle,#FFF 0 1.4px,transparent 2px) 0 0/34px 34px;animation:details-dots 8s linear infinite}
+@keyframes details-dots{50%{background-position:17px -20px;opacity:.32}}
+.details-section .eyebrow{color:#FFE7F1}.details-section .eyebrow::before,.details-section .eyebrow::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.72))}
+.details-section .title-ribbon{background:linear-gradient(110deg,#FFF3F8,#FFD5E6 48%,#FFF3F8);color:#7D2851!important;box-shadow:0 15px 36px rgba(63,10,35,.25)}.details-section .title-ribbon::before,.details-section .title-ribbon::after{background:#F3A5C3}
+.note{position:relative;overflow:visible;opacity:0;translate:0 -34px;rotate:-2deg;border-color:rgba(255,255,255,.85);border-radius:25px;box-shadow:0 20px 42px rgba(58,8,31,.24),inset 0 0 0 1px rgba(201,62,120,.09)}
+.note:nth-child(2){rotate:2deg}.notes.seen .note{animation:note-drop .9s cubic-bezier(.2,.85,.2,1.15) forwards}.notes.seen .note:nth-child(2){animation-delay:.18s}
+@keyframes note-drop{65%{opacity:1;translate:0 5px}to{opacity:1;translate:0;rotate:0deg}}
+.note::before{content:"";position:absolute;z-index:2;left:50%;top:-10px;width:70px;height:22px;translate:-50% 0;rotate:-3deg;background:rgba(255,199,221,.82);box-shadow:0 5px 12px rgba(83,17,47,.12);clip-path:polygon(4% 8%,97% 0,94% 92%,0 100%)}.note:nth-child(2)::before{rotate:3deg;background:rgba(255,233,242,.9)}
+.note-icon{position:relative;background:#FFF;animation:note-icon-bop 2.8s ease-in-out infinite;box-shadow:0 0 0 7px rgba(216,75,135,.08)}.note:nth-child(2) .note-icon{animation-delay:-1.4s}
+.note-icon::after{content:"";position:absolute;inset:-7px;border:1px dashed rgba(184,55,111,.34);border-radius:50%;animation:note-ring 8s linear infinite}
+@keyframes note-icon-bop{50%{transform:translateY(-5px) rotate(-6deg);box-shadow:0 0 0 11px rgba(216,75,135,.04)}}@keyframes note-ring{to{rotate:1turn}}
+
+/* Confirmación: mini pista con ecualizador y llamada luminosa. */
+.rsvp-section{isolation:isolate;overflow:hidden;background:linear-gradient(160deg,#FFF9FC,#FBD9E7 52%,#FFF2F7)}
+.rsvp-section::before{content:"";position:absolute;z-index:-2;inset:-55%;opacity:.36;background:conic-gradient(from 5deg,transparent 0 9%,rgba(213,62,128,.22) 12% 16%,transparent 19% 39%,rgba(255,255,255,.92) 42% 47%,transparent 50% 70%,rgba(231,103,157,.2) 74% 79%,transparent 82%);animation:rsvp-lights 20s linear infinite}
+@keyframes rsvp-lights{to{transform:rotate(1turn)}}
+.rsvp-shell{position:relative;padding:clamp(2.7rem,8vw,5rem) clamp(1.1rem,5vw,3.5rem);border:1px solid rgba(255,255,255,.88);border-radius:clamp(28px,5vw,46px);background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(255,231,241,.7));box-shadow:0 28px 78px rgba(139,41,82,.17),inset 0 0 0 1px rgba(194,60,116,.08);backdrop-filter:blur(9px);overflow:hidden}
+.rsvp-shell::before{content:"";position:absolute;left:-10%;right:-10%;bottom:-23%;height:42%;background:repeating-linear-gradient(90deg,rgba(169,50,100,.11) 0 1px,transparent 1px 42px),repeating-linear-gradient(0deg,rgba(169,50,100,.11) 0 1px,transparent 1px 32px);transform:perspective(280px) rotateX(54deg);animation:rsvp-floor 8s linear infinite}
+@keyframes rsvp-floor{to{background-position:42px 0,0 -32px}}
+.rsvp-eq{position:relative;z-index:1;height:56px;display:flex;align-items:flex-end;justify-content:center;gap:6px;margin-bottom:1.4rem}.rsvp-eq i{width:7px;height:var(--bar);border-radius:99px;background:linear-gradient(#F480AF,#8D2C57);box-shadow:0 0 12px rgba(217,75,135,.35);transform-origin:bottom;animation:rsvp-bar 1.1s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -.13s)}
+@keyframes rsvp-bar{to{transform:scaleY(.32);filter:brightness(1.35)}}
+.rsvp-shell > *{position:relative;z-index:1}.rsvp-title{background:linear-gradient(110deg,#33141F 15%,#CE477F 42%,#6F2345 58%,#33141F 85%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent!important;animation:rsvp-title 5s linear infinite}
+@keyframes rsvp-title{to{background-position:-220% 0}}
+.rsvp-section .deadline{animation:deadline-float 3.2s ease-in-out infinite;background:rgba(255,255,255,.68);box-shadow:0 10px 26px rgba(139,41,82,.1)}.rsvp-section .deadline svg{animation:calendar-wiggle 2.4s ease-in-out infinite}
+@keyframes deadline-float{50%{transform:translateY(-4px);box-shadow:0 16px 32px rgba(139,41,82,.16)}}@keyframes calendar-wiggle{50%{transform:rotate(-8deg) scale(1.08)}}
+.rsvp-section .btn-xl:not([aria-disabled="true"]){animation:rsvp-button 2.2s ease-in-out infinite}
+@keyframes rsvp-button{50%{transform:translateY(-4px) scale(1.025);box-shadow:0 18px 42px rgba(197,59,118,.42),0 0 0 9px rgba(217,75,135,.08)}}
+@media(max-width:679px){.venues::before{left:1.1rem;top:10%;bottom:10%}.venue{margin-left:.7rem}.message-card{width:calc(100% - .5rem)}.ceremony-rays{width:820px}.details-section{padding-block:4.5rem}.rsvp-shell{width:calc(100% - .5rem)}}
+@media(max-width:420px){.rsvp-section .btn-xl{font-size:.63rem;letter-spacing:.16em;padding:.98em 1.3em .92em;padding-left:1.46em}}
+
 /* ---------- pie ---------- */
 footer{
   position:relative;z-index:3;isolation:isolate;overflow:hidden;min-height:72svh;text-align:center;
@@ -1027,10 +1129,12 @@ footer::before{
   <div class="starband" id="floor" aria-hidden="true"></div>
 
   <!-- DEDICATORIA -->
-  <section class="block">
-    <div class="wrap center rise">
+  <section class="block message-section">
+    <div class="message-ribbons" aria-hidden="true"><span></span><span></span></div>
+    <div class="wrap center rise message-card">
+      <span class="message-spark" aria-hidden="true">✦</span>
       <p class="eyebrow">Para ti</p>
-      <p class="quote">Hay historias y personas que no voy a olvidar, y recuerdos como éste que siempre voy a guardar. Porque son parte de mi vida, es mi deseo que compartan conmigo en este día tan especial.</p>
+      <p class="quote message-quote">Hay historias y personas que no voy a olvidar, y recuerdos como éste que siempre voy a guardar. Porque son parte de mi vida, es mi deseo que compartan conmigo en este día tan especial.</p>
     </div>
   </section>
 
@@ -1074,9 +1178,10 @@ footer::before{
   </section>
 
   <!-- LA IGLESIA -->
-  <section class="block">
+  <section class="block ceremony-section">
+    <div class="ceremony-rays" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="center rise" style="margin-bottom:clamp(1.6rem,5vw,2.4rem)">
+      <div class="center rise ceremony-head" style="margin-bottom:clamp(1.6rem,5vw,2.4rem)">
         <p class="eyebrow">La ceremonia</p>
         <h2 class="title">Aquí empieza la noche</h2>
         <p class="lede">La misa de acción de gracias es a las 7:00 pm en la Iglesia San Felipe. Llega unos minutos antes para que no te pierdas la entrada.</p>
@@ -1109,7 +1214,7 @@ footer::before{
   </section>
 
   <!-- LUGARES -->
-  <section class="block" style="padding-top:clamp(1rem,4vw,2rem)">
+  <section class="block venues-section" style="padding-top:clamp(1rem,4vw,2rem)">
     <div class="wrap">
       <div class="center rise" style="margin-bottom:clamp(2rem,6vw,3rem)">
         <p class="eyebrow">Dónde y cuándo</p>
@@ -1157,7 +1262,7 @@ footer::before{
   </section>
 
   <!-- VESTIMENTA -->
-  <section class="block">
+  <section class="block dress-section">
     <div class="wrap">
       <div class="center rise" style="margin-bottom:clamp(1.6rem,5vw,2.4rem)">
         <p class="eyebrow">Vestimenta</p>
@@ -1224,7 +1329,7 @@ footer::before{
   </section>
 
   <!-- DETALLES DE LA NOCHE -->
-  <section class="block" style="padding-top:clamp(1rem,4vw,2rem)">
+  <section class="block details-section" style="padding-top:clamp(1rem,4vw,2rem)">
     <div class="wrap">
       <div class="center rise" style="margin-bottom:clamp(1.6rem,5vw,2.4rem)">
         <p class="eyebrow">Antes de venir</p>
@@ -1285,10 +1390,13 @@ footer::before{
   <div class="starband" id="floor3" aria-hidden="true"></div>
 
   <!-- CONFIRMACIÓN -->
-  <section class="block">
-    <div class="wrap center rise">
+  <section class="block rsvp-section">
+    <div class="wrap center rise rsvp-shell">
+      <div class="rsvp-eq" aria-hidden="true">
+        <i style="--i:0;--bar:22px"></i><i style="--i:1;--bar:38px"></i><i style="--i:2;--bar:29px"></i><i style="--i:3;--bar:52px"></i><i style="--i:4;--bar:34px"></i><i style="--i:5;--bar:44px"></i><i style="--i:6;--bar:25px"></i>
+      </div>
       <p class="eyebrow">Confirma tu lugar</p>
-      <h2 class="title">Guardo un lugar en la pista con tu nombre</h2>
+      <h2 class="title rsvp-title">Guardo un lugar en la pista con tu nombre</h2>
       <p class="lede">Confírmame por WhatsApp y te mando tu pase digital. Sin pase no hay entrada, así que no lo dejes para el final.</p>
       <p style="margin-top:clamp(1.4rem,4vw,2rem)">
         <span class="deadline">
