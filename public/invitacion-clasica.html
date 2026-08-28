@@ -1038,6 +1038,8 @@ footer::after{
 footer > *{position:relative;z-index:1}
 @keyframes footer-lights{to{transform:rotate(14deg) scale(1.08)}}
 @keyframes final-projections{to{background-position:68px -68px,-31px 71px}}
+.footer-desktop{display:grid;gap:1.2rem;justify-items:center}
+.footer-mobile{display:none}
 .final-disco-reveal{display:grid;place-items:center;margin-bottom:.15rem}
 .final-disco-wrap{
   --d:clamp(92px,21vw,142px);position:relative;width:var(--d);height:var(--d);
@@ -1137,6 +1139,39 @@ footer > *{position:relative;z-index:1}
 .foot-ribbon::before{left:9%;rotate:-32deg}.foot-ribbon::after{right:9%;rotate:148deg}
 @keyframes foot-ribbon{50%{transform:scaleX(.92);filter:brightness(1.12)}}
 .foot-note{margin:0;font-size:var(--step--1);letter-spacing:.24em;text-transform:uppercase;color:var(--silver-dim);padding-left:.24em}
+
+/* Cierre móvil alternativo: sin bola disco, máscaras ni filtros. */
+@media(max-width:679px){
+  footer{
+    min-height:58svh;padding:clamp(4rem,16vw,6rem) var(--pad);
+    background:linear-gradient(165deg,#FFF9FC 0%,#F8D9E5 58%,#F3C1D3 100%);
+  }
+  footer::before,footer::after{content:none!important;display:none!important;animation:none!important}
+  .footer-desktop{
+    display:none!important;visibility:hidden!important;content-visibility:hidden;
+  }
+  .footer-desktop,.footer-desktop *,
+  .footer-desktop *::before,.footer-desktop *::after{
+    animation:none!important;transition:none!important;
+  }
+  .footer-mobile{display:grid;justify-items:center;gap:1rem;width:100%}
+  .mobile-final-seal{
+    width:68px;height:68px;display:grid;place-items:center;border-radius:50%;
+    border:1px solid rgba(149,48,90,.28);background:rgba(255,255,255,.66);
+    box-shadow:0 12px 28px rgba(126,40,78,.12),inset 0 0 0 7px rgba(220,94,146,.06);
+    color:#9B315E;font-family:"Bodoni Moda",serif;font-size:1.25rem;letter-spacing:.08em;
+    animation:mobile-final-float 5s ease-in-out infinite;
+  }
+  @keyframes mobile-final-float{50%{transform:translateY(-5px) scale(1.025)}}
+  .mobile-final-kicker{margin:.35rem 0 0;color:var(--blush-deep);font-size:.62rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;padding-left:.3em}
+  .mobile-final-name{
+    margin:.2rem 0 0;font-family:"Bodoni Moda",Didot,serif;
+    font-size:clamp(6.3rem,32vw,8.5rem);font-weight:400;letter-spacing:-.075em;line-height:.72;
+    color:#A83D68;
+  }
+  .mobile-final-rule{width:min(68vw,240px);height:3px;border-radius:99px;background:linear-gradient(90deg,transparent,#D96A87 18%,#F2A3C0 50%,#D96A87 82%,transparent)}
+  .mobile-final-note{margin:.2rem 0 0;font-size:.62rem;letter-spacing:.19em;text-transform:uppercase;color:#775B66;padding-left:.19em}
+}
 
 /* ---------- botón de música ---------- */
 #music{
@@ -1680,22 +1715,31 @@ footer > *{position:relative;z-index:1}
 </main>
 
 <footer>
-  <div class="final-disco-reveal rise" aria-hidden="true">
-    <div class="final-disco-wrap">
-      <span class="final-disco-cord"></span>
-      <span class="final-disco-ray final-disco-ray--one"></span>
-      <span class="final-disco-ray final-disco-ray--two"></span>
-      <span class="final-disco-ray final-disco-ray--three"></span>
-      <div class="ball final-disco-ball"></div>
-      <span class="final-disco-spark final-disco-spark--one">✦</span>
-      <span class="final-disco-spark final-disco-spark--two">✦</span>
-      <span class="final-disco-spark final-disco-spark--three">✦</span>
+  <div class="footer-desktop">
+    <div class="final-disco-reveal rise" aria-hidden="true">
+      <div class="final-disco-wrap">
+        <span class="final-disco-cord"></span>
+        <span class="final-disco-ray final-disco-ray--one"></span>
+        <span class="final-disco-ray final-disco-ray--two"></span>
+        <span class="final-disco-ray final-disco-ray--three"></span>
+        <div class="ball final-disco-ball"></div>
+        <span class="final-disco-spark final-disco-spark--one">✦</span>
+        <span class="final-disco-spark final-disco-spark--two">✦</span>
+        <span class="final-disco-spark final-disco-spark--three">✦</span>
+      </div>
     </div>
+    <p class="foot-kicker">Gracias por acompañarme</p>
+    <p class="foot-name"><span class="sr-only">Lisa</span><span class="foot-letter" aria-hidden="true" style="--i:0">L</span><span class="foot-letter" aria-hidden="true" style="--i:1">i</span><span class="foot-letter" aria-hidden="true" style="--i:2">s</span><span class="foot-letter" aria-hidden="true" style="--i:3">a</span></p>
+    <span class="foot-ribbon" aria-hidden="true"></span>
+    <p class="foot-note">26 · 09 · 2026 &nbsp;✦&nbsp; Chihuahua</p>
   </div>
-  <p class="foot-kicker">Gracias por acompañarme</p>
-  <p class="foot-name"><span class="sr-only">Lisa</span><span class="foot-letter" aria-hidden="true" style="--i:0">L</span><span class="foot-letter" aria-hidden="true" style="--i:1">i</span><span class="foot-letter" aria-hidden="true" style="--i:2">s</span><span class="foot-letter" aria-hidden="true" style="--i:3">a</span></p>
-  <span class="foot-ribbon" aria-hidden="true"></span>
-  <p class="foot-note">26 · 09 · 2026 &nbsp;✦&nbsp; Chihuahua</p>
+  <div class="footer-mobile">
+    <div class="mobile-final-seal" aria-hidden="true">XV</div>
+    <p class="mobile-final-kicker">Gracias por acompañarme</p>
+    <p class="mobile-final-name">Lisa</p>
+    <span class="mobile-final-rule" aria-hidden="true"></span>
+    <p class="mobile-final-note">26 · 09 · 2026 &nbsp;✦&nbsp; Chihuahua</p>
+  </div>
 </footer>
 
 <button id="music" type="button" aria-label="Activar la música Pink Disco" aria-pressed="false">
