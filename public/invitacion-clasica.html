@@ -163,12 +163,18 @@ a{color:inherit}
   transition:opacity .9s ease, visibility .9s;
 }
 #gate.gone{opacity:0;visibility:hidden}
+#gate::before{
+  content:"";position:absolute;z-index:0;inset:-30%;pointer-events:none;opacity:.32;
+  background:radial-gradient(circle,rgba(187,52,109,.7) 0 1.2px,transparent 1.8px) 0 0/42px 42px;
+  animation:gate-dots 11s linear infinite;
+}
 #gate::after{
   content:"";position:absolute;z-index:0;inset:-55% -80%;pointer-events:none;
   background:linear-gradient(112deg,transparent 35%,rgba(255,255,255,.72) 48%,rgba(255,163,201,.3) 52%,transparent 66%);
   transform:translateX(-35%) rotate(7deg);animation:gate-shimmer 6.8s ease-in-out infinite;
 }
 @keyframes gate-shimmer{50%,100%{transform:translateX(42%) rotate(7deg)}}
+@keyframes gate-dots{50%{background-position:21px -18px;opacity:.52}}
 
 /* ---------- marco decorativo de la portada ----------
    Todos los adornos van pegados a los bordes para dejar
@@ -222,26 +228,39 @@ a{color:inherit}
   .starband svg{opacity:.85;transform:none}
 }
 
-.gate-inner{position:relative;z-index:1;display:grid;gap:clamp(1rem,3vw,1.6rem);justify-items:center;max-width:34rem}
+.gate-inner{position:relative;z-index:1;display:grid;gap:clamp(.8rem,2.4vw,1.35rem);justify-items:center;max-width:min(92vw,50rem);perspective:900px;transition:opacity .65s ease,transform .75s ease,filter .7s ease}
+#gate.gone .gate-inner{opacity:0;transform:scale(1.08);filter:blur(8px)}
+#gate .deco{animation:gate-deco-load 1.1s ease both;transition:opacity .65s ease,scale .8s ease}
+#gate.gone .deco{opacity:0;scale:1.08}
+@keyframes gate-deco-load{from{opacity:0;scale:1.12}to{opacity:1;scale:1}}
 .gate-eyebrow{
   font-size:var(--step--1);letter-spacing:.42em;text-transform:uppercase;
   color:var(--blush-deep);padding-left:.42em;
+  opacity:0;animation:gate-rise .7s cubic-bezier(.2,.8,.2,1) both .1s;
 }
+.gate-name-stage{position:relative;display:grid;place-items:center;min-width:min(76vw,620px);padding:.25rem clamp(1rem,5vw,2.5rem);opacity:0;animation:gate-name-load 1.15s cubic-bezier(.16,.82,.2,1) both .28s}
+.gate-name-stage::before,.gate-name-stage::after{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:100%;height:82%;translate:-50% -50%;border:1px dashed rgba(178,53,108,.28);border-radius:50%;animation:gate-orbit 16s linear infinite}
+.gate-name-stage::after{width:86%;height:112%;border-style:dotted;animation-direction:reverse;animation-duration:22s}
+@keyframes gate-name-load{from{opacity:0;transform:translateY(38px) rotateX(24deg) scale(.78);filter:blur(8px)}65%{opacity:1;transform:translateY(-5px) rotateX(-3deg) scale(1.04);filter:none}to{opacity:1;transform:none}}
+@keyframes gate-orbit{to{rotate:1turn}}
 .gate-name{
   font-family:"Bodoni Moda",Didot,"Times New Roman",serif;
-  font-size:var(--step-4);font-weight:400;line-height:.88;margin:0;
-  letter-spacing:.01em;
-  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+  display:flex;justify-content:center;font-size:clamp(5.4rem,24vw,12rem);font-weight:400;line-height:.74;margin:0;
+  letter-spacing:-.065em;padding-right:.065em;filter:drop-shadow(0 12px 24px rgba(142,43,87,.2));
 }
+.gate-letter{display:inline-block;padding-bottom:.08em;background:linear-gradient(120deg,#7B294A 5%,#E875A4 27%,#9A345B 48%,#F4A2C3 66%,#7B294A 92%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gate-letter-dance 4.6s cubic-bezier(.2,.8,.2,1) infinite,gate-letter-shine 6.5s linear infinite;animation-delay:calc(1.25s + var(--i) * .14s),calc(var(--i) * -.8s)}
+@keyframes gate-letter-dance{0%,100%{transform:translateY(0) rotate(0)}12%{transform:translateY(-.08em) rotate(-2deg)}24%{transform:none}}
+@keyframes gate-letter-shine{to{background-position:-250% 0}}
 .gate-sub{
   font-family:"Bodoni Moda",serif;font-style:italic;font-size:var(--step-1);
-  color:var(--ink-soft);margin:0;
+  color:var(--ink-soft);margin:0;opacity:0;animation:gate-rise .72s cubic-bezier(.2,.8,.2,1) both .72s;
 }
 .gate-badge{
   display:inline-flex;align-items:center;gap:.65rem;margin:-.25rem 0 .15rem;padding:.45rem 1rem .38rem;
   border:1px solid rgba(142,61,87,.35);border-radius:999px;background:rgba(255,255,255,.55);
   color:var(--blush-deep);font-size:.58rem;font-weight:500;letter-spacing:.23em;text-transform:uppercase;
   box-shadow:0 8px 24px rgba(150,60,88,.09);backdrop-filter:blur(7px);
+  opacity:0;animation:gate-rise .72s cubic-bezier(.2,.8,.2,1) both .84s,gate-badge-glow 3.2s ease-in-out infinite 1.8s;
 }
 .gate-badge::before,.gate-badge::after{content:"✦";font-size:.7rem;color:var(--blush)}
 .gate-btn{
@@ -253,9 +272,14 @@ a{color:inherit}
   color:var(--ink);cursor:pointer;
   transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
   box-shadow:0 6px 20px rgba(150,60,88,.10);
+  opacity:0;animation:gate-rise .72s cubic-bezier(.2,.8,.2,1) both .98s,gate-button-pulse 2.8s ease-in-out infinite 1.9s;
 }
 .gate-btn:hover{transform:translateY(-2px);border-color:var(--blush-deep);box-shadow:0 12px 34px rgba(150,60,88,.20)}
-.gate-note{font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:var(--silver-dim)}
+.gate-note{font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:var(--silver-dim);opacity:0;animation:gate-rise .72s cubic-bezier(.2,.8,.2,1) both 1.1s}
+@keyframes gate-rise{from{opacity:0;transform:translateY(18px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes gate-badge-glow{50%{box-shadow:0 10px 32px rgba(197,59,118,.18),0 0 0 7px rgba(217,75,135,.06)}}
+@keyframes gate-button-pulse{50%{transform:translateY(-3px);box-shadow:0 14px 34px rgba(174,50,104,.23),0 0 0 8px rgba(217,75,135,.06)}}
+@media(max-width:430px){.gate-inner{gap:.75rem}.gate-name-stage{min-width:88vw;padding-inline:.4rem}.gate-name{font-size:clamp(5.5rem,29vw,7.2rem)}.gate-name-stage::before{width:92%;height:80%}.gate-name-stage::after{width:78%;height:108%}}
 
 /* ---------- estructura ---------- */
 main{position:relative;z-index:3;display:block}
@@ -295,6 +319,11 @@ h2.title{
   display:grid;grid-template-rows:1fr auto auto;
   isolation:isolate;overflow:hidden;
 }
+.hero-curtain{position:absolute;inset:0;z-index:5;pointer-events:none;display:flex;overflow:hidden}
+.hero-curtain span{width:51%;height:100%;background:linear-gradient(135deg,rgba(151,43,89,.96),rgba(230,105,158,.92));box-shadow:0 0 40px rgba(68,12,38,.28);backdrop-filter:blur(10px)}
+.hero-curtain span:first-child{transform-origin:left}.hero-curtain span:last-child{transform-origin:right}
+.hero.hero-enter .hero-curtain span:first-child{animation:curtain-left 1.35s cubic-bezier(.72,0,.18,1) forwards}.hero.hero-enter .hero-curtain span:last-child{animation:curtain-right 1.35s cubic-bezier(.72,0,.18,1) forwards}
+@keyframes curtain-left{to{transform:translateX(-104%) skewX(-5deg);opacity:.35}}@keyframes curtain-right{to{transform:translateX(104%) skewX(5deg);opacity:.35}}
 .hero::before{
   content:"";position:absolute;inset:-25% -45%;z-index:-1;pointer-events:none;opacity:.42;mix-blend-mode:screen;
   background:conic-gradient(from -25deg at 50% 8%,transparent 0 9%,rgba(255,153,201,.52) 11%,transparent 16% 33%,rgba(255,255,255,.6) 35%,transparent 40% 60%,rgba(244,100,168,.42) 64%,transparent 69%);
@@ -334,11 +363,22 @@ h2.title{
   text-shadow:0 1px 12px rgba(255,244,247,.95);
 }
 .hero-name{
-  font-family:"Bodoni Moda",Didot,serif;font-weight:400;
-  font-size:var(--step-4);line-height:.86;margin:0;letter-spacing:-.005em;
-  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 2px 10px rgba(255,244,247,.9));
+  position:relative;font-family:"Bodoni Moda",Didot,serif;font-weight:400;
+  font-size:clamp(6rem,30vw,13.5rem);line-height:.69;margin:.02em 0 .05em;letter-spacing:-.065em;padding-right:.065em;
+  background:linear-gradient(115deg,#742440 4%,#E875A4 25%,#8C2F52 45%,#F4A2C3 64%,#762541 88%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 12px rgba(255,244,247,.95)) drop-shadow(0 12px 24px rgba(112,30,65,.2));
+  animation:hero-name-shine 7s linear infinite;
 }
+.hero-name::before,.hero-name::after{content:"✦";position:absolute;top:14%;font-family:"Jost",sans-serif;font-size:clamp(.8rem,3vw,1.4rem);color:#D94B87;text-shadow:0 0 15px #F473A9;-webkit-text-fill-color:#D94B87;animation:hero-name-star 2.5s ease-in-out infinite}.hero-name::before{left:-.28em}.hero-name::after{right:-.18em;top:62%;animation-delay:-1.2s}
+@keyframes hero-name-shine{to{background-position:-260% 0}}@keyframes hero-name-star{50%{transform:scale(1.8) rotate(45deg);color:#FFF;-webkit-text-fill-color:#FFF;opacity:.55}}
+.hero.hero-enter .hero-kicker{animation:hero-item-in .8s cubic-bezier(.16,.82,.2,1) both .22s}
+.hero.hero-enter .hero-name{animation:hero-name-in 1.2s cubic-bezier(.16,.82,.2,1) both .32s,hero-name-shine 7s linear infinite}
+.hero.hero-enter .hero-party{animation:hero-item-in .8s cubic-bezier(.16,.82,.2,1) both .62s}
+.hero.hero-enter .hero-rule{animation:hero-item-in .8s cubic-bezier(.16,.82,.2,1) both .76s}
+.hero.hero-enter .hero-date{animation:hero-item-in .8s cubic-bezier(.16,.82,.2,1) both .88s}
+.hero.hero-enter .scroll-cue{animation:hero-item-in .8s cubic-bezier(.16,.82,.2,1) both 1.02s}
+@keyframes hero-item-in{from{opacity:0;transform:translateY(24px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes hero-name-in{from{opacity:0;transform:translateY(42px) scale(.56);filter:blur(10px)}62%{opacity:1;transform:translateY(-7px) scale(1.06);filter:none}to{opacity:1;transform:none}}
 .hero-rule{display:flex;align-items:center;gap:.9rem;color:var(--blush-deep);font-size:var(--step--1);letter-spacing:.3em;text-transform:uppercase;text-shadow:0 1px 10px rgba(255,244,247,.95)}
 .hero-rule::before,.hero-rule::after{content:"";height:1px;width:clamp(28px,9vw,64px);background:linear-gradient(90deg,transparent,var(--blush))}
 .hero-rule::after{background:linear-gradient(90deg,var(--blush),transparent)}
@@ -1061,7 +1101,11 @@ footer::before{
 
   <div class="gate-inner">
     <p class="gate-eyebrow">26 · 09 · 2026</p>
-    <h1 class="gate-name" id="gate-name">Lisa</h1>
+    <div class="gate-name-stage">
+      <h1 class="gate-name" id="gate-name" aria-label="Lisa">
+        <span class="gate-letter" aria-hidden="true" style="--i:0">L</span><span class="gate-letter" aria-hidden="true" style="--i:1">i</span><span class="gate-letter" aria-hidden="true" style="--i:2">s</span><span class="gate-letter" aria-hidden="true" style="--i:3">a</span>
+      </h1>
+    </div>
     <p class="gate-sub">Mis XV Años</p>
     <span class="gate-badge">Pink Disco Edition</span>
     <button class="gate-btn" id="enter" type="button">Abrir invitación</button>
@@ -1073,6 +1117,7 @@ footer::before{
 
   <!-- HÉROE -->
   <section class="hero">
+    <div class="hero-curtain" aria-hidden="true"><span></span><span></span></div>
     <div class="hero-stage" id="stage">
       <figure class="on" style="background-image:url(assets/img/hero/h6.jpg)"></figure>
       <figure style="background-image:url(assets/img/hero/h20.jpg)"></figure>
@@ -1578,9 +1623,10 @@ footer::before{
   });
 
   /* ====== HÉROE: fotos que cambian ====== */
-  var figs = document.querySelectorAll("#stage figure"), hi = 0;
-  if (figs.length > 1 && !reduce){
-    setInterval(function(){
+  var figs = document.querySelectorAll("#stage figure"), hi = 0, heroTimer = null;
+  function startHeroSlideshow(){
+    if (heroTimer || figs.length < 2 || reduce) return;
+    heroTimer = setInterval(function(){
       figs[hi].classList.remove("on");
       hi = (hi + 1) % figs.length;
       figs[hi].classList.add("on");
@@ -1822,6 +1868,8 @@ footer::before{
   /* ====== ENTRAR ====== */
   document.body.classList.add("locked");
   document.getElementById("enter").addEventListener("click", function(){
+    document.querySelector(".hero").classList.add("hero-enter");
+    window.setTimeout(startHeroSlideshow,2600);
     document.getElementById("gate").classList.add("gone");
     document.body.classList.remove("locked");
     window.scrollTo(0,0);
