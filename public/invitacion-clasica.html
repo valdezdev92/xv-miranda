@@ -603,16 +603,34 @@ h2.title{
 /* ---------- la iglesia ---------- */
 .church{margin:0;display:grid;gap:1rem;justify-items:center}
 .church-media{
-  width:100%;border-radius:18px;overflow:hidden;
+  width:100%;position:relative;border-radius:18px;overflow:hidden;
   border:1px solid var(--line);background:var(--card);
   box-shadow:0 16px 44px rgba(150,60,88,.12);
 }
-.church-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.church-background{
+  position:absolute;z-index:0;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+}
 .church-draw{
-  display:grid;place-items:center;aspect-ratio:4/3;
+  position:relative;z-index:1;display:grid;place-items:center;aspect-ratio:4/3;
   padding:clamp(1.4rem,6vw,2.4rem);color:var(--blush-deep);
 }
 .church-draw svg{width:min(100%,360px);height:auto}
+.church-media.has-background .church-draw{
+  color:#A42E63;
+  background:radial-gradient(circle at 50% 50%,rgba(255,250,252,.76) 0 23%,rgba(255,247,250,.28) 42%,transparent 70%);
+}
+.church-media.has-background .church-draw::before{
+  content:"";position:absolute;z-index:0;left:50%;top:50%;
+  width:clamp(150px,45%,250px);aspect-ratio:1;translate:-50% -50%;
+  border:1px solid rgba(255,255,255,.65);border-radius:50%;
+  background:rgba(255,248,251,.18);box-shadow:0 0 45px rgba(255,255,255,.7),inset 0 0 28px rgba(216,75,135,.08);
+  backdrop-filter:blur(1.5px);
+}
+.church-media.has-background .church-draw svg{
+  position:relative;z-index:1;width:min(58%,250px);
+  filter:drop-shadow(0 2px 1px rgba(255,255,255,.95)) drop-shadow(0 0 12px rgba(255,255,255,.9));
+}
 .church figcaption{
   font-size:var(--step--1);letter-spacing:.2em;text-transform:uppercase;
   color:var(--silver-dim);padding-left:.2em;text-align:center;
@@ -844,7 +862,7 @@ h2.title{
 .church.seen .church-draw path,.church.seen .church-draw circle{stroke-dasharray:620;stroke-dashoffset:620;animation:church-line 2.8s cubic-bezier(.3,.7,.2,1) forwards;animation-delay:.12s}
 .church.seen .church-draw path:nth-child(2n){animation-delay:.28s}.church.seen .church-draw path:nth-child(3n){animation-delay:.44s}
 @keyframes church-line{to{stroke-dashoffset:0}}
-.church-media img{animation:church-photo 14s ease-in-out infinite alternate}
+.church-background{animation:church-photo 14s ease-in-out infinite alternate}
 @keyframes church-photo{to{transform:scale(1.055);filter:saturate(1.08)}}
 .church figcaption{display:inline-flex;align-items:center;gap:.65rem;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid var(--line);box-shadow:0 8px 22px rgba(142,43,87,.08)}
 .church figcaption::before{content:"";width:7px;height:7px;border-radius:50%;background:#D94B87;box-shadow:0 0 0 5px rgba(217,75,135,.12),0 0 15px #D94B87;animation:church-dot 1.6s ease-in-out infinite}
@@ -1233,8 +1251,8 @@ footer::before{
       </div>
       <figure class="church rise">
         <div class="church-media" id="media-iglesia">
-          <!-- Configura la ruta de la fachada en config.js para sustituir
-               este dibujo. Si la ruta queda vacía, se conserva el dibujo. -->
+          <!-- La imagen configurada se muestra como fondo. Este dibujo
+               permanece encima para conservar su animación de trazado. -->
           <div class="church-draw" id="dibujo-iglesia" aria-hidden="true">
             <svg viewBox="0 0 220 152" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="M110 4v14M103 11h14"/>
@@ -1561,9 +1579,9 @@ footer::before{
     document.getElementById("seccion-padres").hidden = false;
   }
 
-  /* ====== FOTO DE LA IGLESIA ======
-     Si se configuró una ruta, se comprueba primero que la foto
-     exista y solo entonces sustituye al dibujo.                 */
+  /* ====== FONDO DE LA IGLESIA ======
+     Si se configuró una ruta, se comprueba primero que la imagen
+     exista y se coloca detrás del dibujo animado.               */
   var mediaIglesia  = document.getElementById("media-iglesia");
   var dibujoIglesia = document.getElementById("dibujo-iglesia");
   var rutaIglesia   = String(LOCAL.iglesia || "").trim();
@@ -1571,10 +1589,13 @@ footer::before{
     var prueba = new Image();
     prueba.onload = function(){
       var img = document.createElement("img");
+      img.className = "church-background";
       img.src = rutaIglesia;
-      img.alt = "Fachada de la Iglesia San Felipe";
+      img.alt = "Bosquejo rosa de la fachada de la Iglesia San Felipe";
       img.decoding = "async";
-      mediaIglesia.replaceChild(img, dibujoIglesia);
+      img.loading = "lazy";
+      mediaIglesia.insertBefore(img, dibujoIglesia);
+      mediaIglesia.classList.add("has-background");
     };
     prueba.src = rutaIglesia;
   }

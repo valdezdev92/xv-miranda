@@ -57,10 +57,9 @@ window.XV_CONFIG = {
     musica: "assets/musica/beauty-and-a-beat.mp3",
     musicaTitulo: "Beauty and a Beat",
 
-    /* Foto de la fachada de la iglesia. Déjalo vacío para usar
-       el dibujo incluido. Para usar una foto, guárdala dentro de
-       public/assets/img/ y escribe aquí su ruta.                 */
-    iglesia: ""
+    /* Imagen de fondo de la iglesia. El dibujo animado se conserva
+       encima; déjalo vacío para mostrar únicamente el dibujo.    */
+    iglesia: "assets/img/iglesia-san-felipe-bosquejo-rosa.webp"
   }
 
 };
