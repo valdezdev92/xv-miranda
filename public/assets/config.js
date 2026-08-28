@@ -28,7 +28,7 @@ window.XV_CONFIG = {
   },
 
   /* ------------------------------------------------------------
-     Ajustes que SOLO usa la versión clásica (la de Lisa).
+     Ajustes que usan las versiones de Lisa: clásica y vintage.
      Las otras tres invitaciones siguen tomando los datos de
      arriba, así que puedes cambiar esto sin tocarlas.
      ------------------------------------------------------------ */
@@ -36,7 +36,7 @@ window.XV_CONFIG = {
 
     /* Nombres de los papás de Lisa, tal como quieres que
        aparezcan. Mientras los dos estén vacíos, la sección de
-       papás no se muestra en la versión clásica.
+       papás no se muestra en las versiones de Lisa.
        Ejemplo:  mama: "María López",  papa: "Juan Valdez"      */
     padres: {
       mama: "",

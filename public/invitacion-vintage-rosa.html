@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lisa · Mis XV Años · Vintage Rosa</title>
+<meta name="description" content="Invitación vintage rosa a los XV años de Lisa. Sábado 26 de septiembre de 2026 en Chihuahua.">
+<meta name="theme-color" content="#8A465A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/gal/g30.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lisa · Mis XV Años">
+<meta property="og:description" content="26 de septiembre de 2026 · Iglesia San Felipe · Salón Cantabria">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="assets/img/hero/h20.jpg" fetchpriority="high">
+<style>
+:root{
+  --paper:#FFF9F7;
+  --paper-2:#FBEAEC;
+  --paper-3:#F4D9DF;
+  --rose:#C98596;
+  --rose-deep:#8A465A;
+  --rose-dark:#5D2E3D;
+  --rose-mist:#E8BFC8;
+  --gold:#AA7A69;
+  --gold-soft:#D6B5A8;
+  --ink:#3B2830;
+  --muted:#745B64;
+  --white:#FFFDFB;
+  --line:rgba(138,70,90,.22);
+  --shadow:0 18px 44px rgba(93,46,61,.14);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Montserrat",ui-sans-serif,system-ui,sans-serif;
+  --page:min(100% - clamp(2rem,8vw,6rem),760px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:hidden;background:var(--paper);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{min-width:320px;margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:clamp(.94rem,.9rem + .2vw,1.05rem);line-height:1.75;-webkit-font-smoothing:antialiased}
+body.locked{height:100svh;overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--rose-deep);outline-offset:4px}
+[hidden]{display:none!important}
+
+/* Papel envejecido y trazos botánicos originales. */
+.paper{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 12% 4%,rgba(201,133,150,.11),transparent 26rem),
+    radial-gradient(circle at 92% 80%,rgba(170,122,105,.09),transparent 25rem),
+    var(--paper);
+}
+.paper::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.22;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23C98596' stroke-width='.7' opacity='.22'%3E%3Cpath d='M18 44c24-28 51-15 39 12-9 21-31 14-22-3 7-13 25-11 33 5'/%3E%3Cpath d='M118 126c7-26 29-31 34-10 4 17-13 26-21 13-6-10 3-22 16-24'/%3E%3Cpath d='M76 154c16-8 28-4 34 12M89 149c-2 8-1 15 4 23'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.wrap{width:var(--page);margin-inline:auto}
+.section{position:relative;padding-block:clamp(5rem,17vw,9rem)}
+.section--compact{padding-block:clamp(3.8rem,12vw,6rem)}
+.center{text-align:center}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.is-visible{opacity:1;transform:none}
+
+.eyebrow{margin:0 0 .8rem;color:var(--rose-deep);font-size:.66rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase}
+.section-title{margin:0;font-family:var(--serif);font-size:clamp(2.7rem,10vw,5rem);font-weight:600;letter-spacing:-.025em;line-height:.92;text-wrap:balance}
+.section-copy{max-width:38rem;margin:1.2rem auto 0;color:var(--muted);text-wrap:pretty}
+
+/* Entrada */
+.gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;padding:1.5rem;background:#4B2632;color:var(--white);text-align:center;transition:opacity .9s ease,visibility .9s ease}
+.gate.is-gone{opacity:0;visibility:hidden}
+.gate::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,24,31,.35),rgba(65,29,41,.72)),url("assets/img/hero/h20.jpg") center 28%/cover;transform:scale(1.04)}
+.gate::after{content:"";position:absolute;inset:1rem;border:1px solid rgba(255,249,247,.35);border-radius:48% 48% 45% 45%/12% 12% 8% 8%;pointer-events:none}
+.gate__inner{position:relative;display:grid;justify-items:center;width:min(100%,31rem);gap:1rem}
+.gate__mark{width:72px;color:var(--rose-mist)}
+.gate__date{display:flex;align-items:center;gap:.8rem;margin:0;font-family:var(--serif);font-size:1.2rem;font-weight:600;letter-spacing:.14em}
+.gate__date::before,.gate__date::after{content:"";width:44px;height:1px;background:rgba(255,255,255,.65)}
+.gate__name{margin:.3rem 0 0;font-family:var(--serif);font-size:clamp(4.4rem,20vw,7.8rem);font-weight:600;letter-spacing:-.045em;line-height:.72}
+.gate__occasion{margin:0;font-family:var(--serif);font-size:clamp(1.5rem,7vw,2.2rem);font-style:italic}
+.gate__copy{max-width:27rem;margin:.8rem 0;color:#F7E8EB;font-size:.88rem;line-height:1.7}
+.gate__button{min-width:min(100%,18rem);min-height:3.2rem;padding:.8rem 1.35rem;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(255,249,247,.92);box-shadow:0 10px 28px rgba(0,0,0,.18);color:var(--rose-dark);font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:transform .2s ease,background .2s ease}
+.gate__button:hover{background:#fff;transform:translateY(-2px)}
+.gate__hint{margin:0;color:#E9CDD4;font-size:.63rem;letter-spacing:.16em;text-transform:uppercase}
+
+/* Portada */
+.hero{position:relative;display:grid;min-height:100svh;place-items:center;overflow:hidden;color:var(--white);text-align:center;isolation:isolate}
+.hero__photo{position:absolute;inset:0;z-index:-3;background:url("assets/img/hero/h20.jpg") center 30%/cover;transform:scale(1.02);animation:hero-drift 18s ease-in-out infinite alternate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(40,24,30,.34),rgba(75,35,49,.56) 62%,rgba(65,29,41,.85))}
+.hero::after{content:"";position:absolute;z-index:-1;inset:auto -8% -38px;height:100px;border-radius:50% 50% 0 0/100% 100% 0 0;background:var(--paper)}
+.hero__inner{display:grid;justify-items:center;width:min(100% - 2.5rem,34rem);gap:.65rem;padding-block:4rem 9rem}
+.hero__butterfly{width:76px;margin-bottom:1rem;color:#F4CDD5;filter:drop-shadow(0 3px 10px rgba(0,0,0,.2))}
+.hero__date{display:flex;align-items:center;gap:.8rem;margin:0;font-family:var(--serif);font-size:1.2rem;font-weight:600;letter-spacing:.12em}
+.hero__date::before,.hero__date::after{content:"";width:42px;height:1px;background:rgba(255,255,255,.75)}
+.hero__name{margin:.35rem 0 0;font-family:var(--serif);font-size:clamp(5.2rem,24vw,9rem);font-weight:600;letter-spacing:-.055em;line-height:.75;text-shadow:0 5px 24px rgba(0,0,0,.25)}
+.hero__occasion{margin:.2rem 0;font-family:var(--serif);font-size:clamp(1.7rem,8vw,2.7rem);font-style:italic}
+.hero__rule{width:86px;height:1px;margin:1rem 0;background:rgba(255,255,255,.65)}
+.hero__quote{max-width:30rem;margin:0;color:#FFF6F7;font-size:clamp(.9rem,3.8vw,1.05rem);line-height:1.8;text-wrap:balance}
+.hero__scroll{position:absolute;bottom:4.8rem;display:grid;justify-items:center;gap:.2rem;color:#F7DDE3;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase}
+.hero__scroll svg{width:28px;animation:bob 2s ease-in-out infinite}
+@keyframes hero-drift{to{transform:scale(1.1) translateY(-1.5%)}}
+@keyframes bob{50%{transform:translateY(7px)}}
+
+/* Medallón de cuenta regresiva */
+.countdown-wrap{position:relative;z-index:4;width:min(100% - 2.2rem,430px);margin:-116px auto 0;padding-top:1px}
+.countdown{position:relative;display:grid;place-items:center;min-height:258px;padding:2.8rem 1.2rem 2.2rem;border-radius:50%;background:var(--white);box-shadow:0 12px 32px rgba(93,46,61,.2);text-align:center}
+.countdown::before,.countdown::after{content:"";position:absolute;border:1px solid var(--gold);border-radius:47% 53% 49% 51%}
+.countdown::before{inset:-12px -9px;transform:rotate(3deg)}
+.countdown::after{inset:-19px -15px;transform:rotate(-4deg);opacity:.62}
+.countdown__label{margin:0;color:var(--gold);font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1}
+.countdown__grid{display:grid;grid-template-columns:repeat(4,1fr);width:100%;margin-top:1.5rem}
+.countdown__unit{position:relative;padding-inline:.2rem}
+.countdown__unit+ .countdown__unit{border-left:1px solid var(--line)}
+.countdown__number{display:block;font-family:var(--serif);font-size:clamp(2rem,10vw,3.2rem);font-weight:700;line-height:.8;font-variant-numeric:tabular-nums}
+.countdown__name{display:block;margin-top:.55rem;color:var(--gold);font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* Dedicatoria y padres */
+.dedication{padding-top:clamp(4.5rem,16vw,7rem)}
+.dedication__mark{color:var(--rose);font-family:var(--serif);font-size:5rem;line-height:.35}
+.dedication__copy{max-width:34rem;margin:1.2rem auto 0;font-family:var(--serif);font-size:clamp(1.55rem,6vw,2.3rem);font-style:italic;line-height:1.35;text-wrap:balance}
+.parents{margin-top:2.4rem;padding:1.4rem;border-block:1px solid var(--line)}
+.parents__label{margin:0;color:var(--rose-deep);font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.parents__list{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.4rem;margin:.8rem 0 0;font-family:var(--serif);font-size:1.65rem;font-weight:600}
+
+/* Título en cinta */
+.ribbon{position:relative;width:min(100% - 2rem,36rem);margin:0 auto 3rem;padding:.68rem 2.5rem;background:var(--rose-deep);color:var(--white);font-family:var(--serif);font-size:clamp(2.1rem,9vw,3.4rem);font-weight:600;line-height:.9;text-align:center;filter:drop-shadow(0 7px 8px rgba(93,46,61,.16))}
+.ribbon::before,.ribbon::after{content:"";position:absolute;top:12px;z-index:-1;border-block:22px solid var(--rose-dark)}
+.ribbon::before{right:100%;border-left:22px solid transparent}
+.ribbon::after{left:100%;border-right:22px solid transparent}
+
+/* Celebración */
+.celebration{padding-top:clamp(5rem,16vw,8rem)}
+.medallion{display:grid;place-items:center;width:118px;height:118px;margin:0 auto 3rem;border:1px solid var(--gold-soft);border-radius:50%;background:var(--white);box-shadow:var(--shadow);color:var(--rose-deep)}
+.medallion svg{width:58px}
+.event-list{display:grid;gap:1.2rem}
+.event{position:relative;display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:center;padding:1.45rem;border:1px solid var(--line);border-radius:1.2rem;background:rgba(255,253,251,.78);box-shadow:0 10px 28px rgba(93,46,61,.08)}
+.event__time{display:grid;place-items:center;width:82px;height:82px;border:1px solid var(--gold-soft);border-radius:50%;background:var(--paper);color:var(--rose-deep);font-family:var(--serif);font-size:2rem;font-weight:700;line-height:.8;text-align:center}
+.event__time small{display:block;font-family:var(--sans);font-size:.5rem;letter-spacing:.12em}
+.event__kind{margin:0;color:var(--gold);font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.event h3{margin:.15rem 0 0;font-family:var(--serif);font-size:clamp(1.8rem,7vw,2.55rem);font-weight:700;line-height:1}
+.event p{margin:.45rem 0 0;color:var(--muted);font-size:.83rem;line-height:1.55}
+.event__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.3rem}
+.button{display:inline-flex;min-height:2.85rem;align-items:center;justify-content:center;padding:.72rem 1.1rem;border:1px solid var(--rose);border-radius:999px;background:var(--white);color:var(--rose-dark);font-size:.64rem;font-weight:600;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;transition:background .2s,color .2s,transform .2s}
+.button:hover{background:var(--rose-deep);color:var(--white);transform:translateY(-2px)}
+.button--solid{background:var(--rose-deep);color:var(--white)}
+.button[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}
+
+/* Galería tipo fotografías impresas */
+.gallery{overflow:hidden;background:linear-gradient(180deg,var(--paper-2),#F6DDE2);border-block:1px solid var(--line)}
+.gallery::before,.gallery::after{content:"";position:absolute;left:-8%;width:116%;height:72px;border-radius:50%;background:var(--paper)}
+.gallery::before{top:-42px}.gallery::after{bottom:-42px}
+.polaroids{display:grid;grid-auto-flow:column;grid-auto-columns:min(78vw,300px);gap:1rem;overflow-x:auto;margin-top:2.5rem;padding:1.2rem max(1rem,calc((100vw - 760px)/2)) 2.2rem;scroll-snap-type:x mandatory;scrollbar-width:none}
+.polaroids::-webkit-scrollbar{display:none}
+.polaroid{margin:0;padding:.7rem .7rem 2.8rem;background:#FFFDFC;box-shadow:0 15px 30px rgba(73,36,49,.17);scroll-snap-align:center;transform:rotate(var(--tilt,0deg))}
+.polaroid:nth-child(2n){--tilt:1.5deg}.polaroid:nth-child(3n){--tilt:-1.2deg}
+.polaroid img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%}
+.polaroid figcaption{margin-top:.7rem;color:var(--gold);font-family:var(--serif);font-size:1.15rem;font-style:italic;text-align:center}
+.gallery__hint{margin:1rem 0 0;color:var(--rose-deep);font-size:.62rem;letter-spacing:.16em;text-align:center;text-transform:uppercase}
+
+/* Fiesta */
+.party{overflow:hidden;background:linear-gradient(180deg,#F1D5DC,#E7BAC6);border-block:1px solid rgba(138,70,90,.18)}
+.party::before{content:"";position:absolute;top:-46px;left:-8%;width:116%;height:86px;border-radius:50%;background:var(--paper)}
+.cards{display:grid;gap:1rem;margin-top:2.8rem}
+.info-card{padding:2rem 1.4rem;border:1px solid rgba(138,70,90,.18);border-radius:1.4rem;background:rgba(255,249,247,.88);box-shadow:var(--shadow);text-align:center}
+.info-card__icon{display:grid;place-items:center;width:66px;height:66px;margin:0 auto 1rem;border:1px solid var(--gold-soft);border-radius:50%;color:var(--rose-deep)}
+.info-card__icon svg{width:33px}
+.info-card h3{margin:0;font-family:var(--serif);font-size:2.2rem;font-weight:700;line-height:1}
+.info-card p{margin:.85rem auto 0;color:var(--muted);font-size:.82rem;line-height:1.65;text-wrap:pretty}
+.info-card strong{display:block;margin-top:.45rem;color:var(--rose-dark);font-weight:600;letter-spacing:.035em}
+.dress-grid{display:grid;gap:.7rem;margin-top:1.2rem;text-align:left}
+.dress-rule{padding:.8rem 1rem;border-left:2px solid var(--rose);background:rgba(201,133,150,.08)}
+.dress-rule b{color:var(--rose-dark);font-family:var(--serif);font-size:1.25rem}
+.dress-rule span{display:block;color:var(--muted);font-size:.76rem;line-height:1.55}
+
+/* Confirmación */
+.rsvp{padding-bottom:0;background:var(--paper)}
+.rsvp__panel{overflow:hidden;border:1px solid var(--line);border-radius:1.6rem 1.6rem 0 0;background:var(--white);box-shadow:var(--shadow)}
+.rsvp__photo{min-height:360px;background:linear-gradient(180deg,rgba(93,46,61,.04),rgba(93,46,61,.35)),url("assets/img/gal/g30.jpg") center 28%/cover}
+.rsvp__copy{padding:clamp(2rem,8vw,3.5rem);text-align:center}
+.rsvp__copy h2{margin:0;font-family:var(--serif);font-size:clamp(2.8rem,11vw,4.8rem);font-weight:700;line-height:.9}
+.rsvp__copy p{max-width:31rem;margin:1.2rem auto;color:var(--muted);font-size:.86rem}
+.rsvp__hint{font-size:.65rem!important}
+
+.footer{position:relative;padding:4rem 1.5rem 5.5rem;background:var(--rose-dark);color:#F8E9EC;text-align:center}
+.footer__mark{width:62px;margin:0 auto 1rem;color:var(--rose-mist)}
+.footer strong{display:block;font-family:var(--serif);font-size:3.5rem;line-height:.9}
+.footer span{display:block;margin-top:.7rem;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase}
+.footer a{display:inline-block;margin-top:1.6rem;color:#F5CDD6;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+
+.music{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:30;display:none;width:58px;height:58px;border:1px solid rgba(138,70,90,.25);border-radius:50%;background:rgba(255,249,247,.92);box-shadow:0 8px 24px rgba(93,46,61,.2);color:var(--rose-deep);cursor:pointer}
+.music.is-ready{display:grid;place-items:center}.music.is-playing{background:var(--rose-deep);color:var(--white)}
+.music svg{width:25px}
+
+@media(min-width:660px){
+  .event-list{grid-template-columns:1fr 1fr}
+  .event:last-child{grid-column:1/-1}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .info-card:first-child{grid-column:1/-1}
+  .rsvp__panel{display:grid;grid-template-columns:.9fr 1.1fr;align-items:stretch}
+  .rsvp__photo{min-height:520px}
+  .rsvp__copy{align-self:center}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.hero__photo,.hero__scroll svg{animation:none}.reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- Símbolo original de mariposa vintage, dibujado con líneas. -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="butterfly" viewBox="0 0 120 92">
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M58 40C43 9 13 3 10 18 7 34 29 46 50 47M62 40C77 9 107 3 110 18c3 16-19 28-40 29"/>
+      <path d="M55 45C35 40 17 48 20 62c3 15 25 7 36-8M65 45c20-5 38 3 35 17-3 15-25 7-36-8"/>
+      <path d="M60 35v35M55 71c2 8 8 8 10 0M57 34c-3-9-9-12-14-13M63 34c3-9 9-12 14-13"/>
+      <path d="M27 19c12 3 21 10 28 22M93 19C81 22 72 29 65 41M29 60c9-7 18-10 27-10M91 60c-9-7-18-10-27-10" opacity=".75"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-name">
+  <div class="gate__inner">
+    <svg class="gate__mark" viewBox="0 0 120 92" aria-hidden="true"><use href="#butterfly"/></svg>
+    <p class="gate__date">26 · 09 · 2026</p>
+    <h1 class="gate__name" id="gate-name">Lisa</h1>
+    <p class="gate__occasion">Mis XV años</p>
+    <p class="gate__copy">Una noche para guardar en la memoria, rodeada de las personas que forman parte de mi historia.</p>
+    <button class="gate__button" id="enter" type="button">Abrir invitación</button>
+    <p class="gate__hint" id="gate-hint">Desliza para descubrir cada detalle</p>
+  </div>
+</div>
+
+<main>
+  <section class="hero" aria-labelledby="hero-name">
+    <div class="hero__photo" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <svg class="hero__butterfly" viewBox="0 0 120 92" aria-hidden="true"><use href="#butterfly"/></svg>
+      <p class="hero__date">26 · 09 · 2026</p>
+      <h1 class="hero__name" id="hero-name">Lisa</h1>
+      <p class="hero__occasion">Mis XV años</p>
+      <span class="hero__rule" aria-hidden="true"></span>
+      <p class="hero__quote">Hay historias y personas que nunca se olvidan. Quiero que formes parte de este recuerdo tan especial.</p>
+      <div class="hero__scroll" aria-hidden="true">Descubre
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="paper">
+    <div class="countdown-wrap reveal">
+      <div class="countdown" aria-label="Cuenta regresiva para la celebración">
+        <div style="width:100%">
+          <p class="countdown__label">Falta</p>
+          <div class="countdown__grid" id="countdown" aria-live="polite">
+            <div class="countdown__unit"><span class="countdown__number" id="days">00</span><span class="countdown__name">Días</span></div>
+            <div class="countdown__unit"><span class="countdown__number" id="hours">00</span><span class="countdown__name">Horas</span></div>
+            <div class="countdown__unit"><span class="countdown__number" id="minutes">00</span><span class="countdown__name">Min</span></div>
+            <div class="countdown__unit"><span class="countdown__number" id="seconds">00</span><span class="countdown__name">Seg</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section dedication">
+      <div class="wrap center reveal">
+        <p class="eyebrow">Con mucha ilusión</p>
+        <span class="dedication__mark" aria-hidden="true">“</span>
+        <p class="dedication__copy">Hay recuerdos que se vuelven eternos cuando los compartimos con quienes queremos.</p>
+        <div class="parents" id="parents" hidden>
+          <p class="parents__label">Con la bendición de mis papás</p>
+          <p class="parents__list" id="parents-list"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section celebration">
+      <div class="wrap">
+        <div class="medallion reveal" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 42h32M20 42V27l12-8 12 8v15M25 42V30h14v12M32 19V9M27 14h10"/><path d="M9 50h46"/></svg>
+        </div>
+        <h2 class="ribbon reveal">Celebración</h2>
+        <div class="event-list">
+          <article class="event reveal">
+            <div class="event__time">7:00<small>PM</small></div>
+            <div><p class="event__kind">Ceremonia</p><h3>Iglesia San Felipe</h3><p>Misa de acción de gracias. Llega unos minutos antes para acompañarme desde la entrada.</p></div>
+            <div class="event__actions"><a class="button" href="https://maps.app.goo.gl/gi9GJLDaPD9RdFVF6?g_st=aw" target="_blank" rel="noopener">Cómo llegar</a></div>
+          </article>
+          <article class="event reveal">
+            <div class="event__time">9:00<small>PM</small></div>
+            <div><p class="event__kind">Recepción</p><h3>Salón Cantabria</h3><p>Cena, vals y pista abierta para celebrar juntos hasta el final de la noche.</p></div>
+            <div class="event__actions"><a class="button" href="https://maps.app.goo.gl/GwhmPwH1akS4FrVt7?g_st=aw" target="_blank" rel="noopener">Cómo llegar</a></div>
+          </article>
+          <article class="event reveal">
+            <div class="event__time">26<small>SEP 2026</small></div>
+            <div><p class="event__kind">La fecha</p><h3>Sábado en Chihuahua</h3><p>Guarda la fecha y acompáñame en cada momento de esta celebración.</p></div>
+            <div class="event__actions"><a class="button" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV%20a%C3%B1os%20de%20Lisa&dates=20260927T010000Z/20260927T070000Z&details=Misa%207%3A00%20pm%20y%20recepci%C3%B3n%209%3A00%20pm&location=Chihuahua%2C%20M%C3%A9xico" target="_blank" rel="noopener">Agendar fecha</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section gallery">
+    <div class="wrap center reveal">
+      <p class="eyebrow">Un recorrido</p>
+      <h2 class="section-title">Momentos que cuentan mi historia</h2>
+      <p class="section-copy">Una selección de recuerdos antes de comenzar este nuevo capítulo.</p>
+    </div>
+    <div class="polaroids" aria-label="Galería de fotos de Lisa">
+      <figure class="polaroid"><img src="assets/img/gal/g2.jpg" alt="Lisa en el puente del lago" width="1200" height="1800" loading="lazy"><figcaption>Una tarde para recordar</figcaption></figure>
+      <figure class="polaroid"><img src="assets/img/gal/g20.jpg" alt="Lisa bajo el cielo azul" width="1200" height="1800" loading="lazy"><figcaption>Quince años de historias</figcaption></figure>
+      <figure class="polaroid"><img src="assets/img/gal/g28.jpg" alt="Lisa frente al lago" width="1200" height="1800" loading="lazy"><figcaption>La ilusión de este día</figcaption></figure>
+      <figure class="polaroid"><img src="assets/img/gal/g30.jpg" alt="Retrato de Lisa sonriendo" width="1200" height="1800" loading="lazy"><figcaption>Lista para celebrar</figcaption></figure>
+      <figure class="polaroid"><img src="assets/img/gal/g34.jpg" alt="Lisa en las escalinatas" width="1200" height="1800" loading="lazy"><figcaption>Un recuerdo eterno</figcaption></figure>
+    </div>
+    <p class="gallery__hint">Desliza las fotografías</p>
+  </section>
+
+  <section class="section party">
+    <div class="wrap">
+      <div class="center reveal">
+        <p class="eyebrow">Antes de venir</p>
+        <h2 class="section-title">Detalles de la noche</h2>
+        <p class="section-copy">Todo lo importante para disfrutar la celebración con tranquilidad.</p>
+      </div>
+      <div class="cards">
+        <article class="info-card reveal">
+          <span class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6 18 12l6 30 6-30-6-6Z"/><path d="M18 12 7 17l8 25M30 12l11 5-8 25"/></svg></span>
+          <h3>Etiqueta</h3>
+          <p>El blanco lo dejamos para la quinceañera.</p>
+          <div class="dress-grid">
+            <div class="dress-rule"><b>Ellos</b><span>Traje oscuro con corbata o moño. Pueden llevar tenis; no mezclilla.</span></div>
+            <div class="dress-rule"><b>Ellas</b><span>Vestido largo. Tacón que aguante la pista hasta el final.</span></div>
+          </div>
+        </article>
+        <article class="info-card reveal">
+          <span class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 41S8 31 8 19a9 9 0 0 1 16-5 9 9 0 0 1 16 5c0 12-16 22-16 22Z"/></svg></span>
+          <h3>Solo adultos</h3>
+          <p>Adoramos a los peques, pero esta noche ellos se quedan en casa. Gracias por comprender.</p>
+        </article>
+        <article class="info-card reveal">
+          <span class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 19h32v22H8zM6 12h36v7H6zM24 12v29"/><path d="M24 12s-3-8-9-8a5 5 0 0 0 0 10M24 12s3-8 9-8a5 5 0 0 1 0 10"/></svg></span>
+          <h3>Lluvia de regalos</h3>
+          <p>Tu presencia es el mejor regalo. Si quieres consentirme con algo más, que sea con un sobre o transferencia a esta cuenta:<strong>BBVA 4152314682129831</strong></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rsvp">
+    <div class="wrap">
+      <div class="rsvp__panel reveal">
+        <div class="rsvp__photo" role="img" aria-label="Lisa sonriendo"></div>
+        <div class="rsvp__copy">
+          <p class="eyebrow">Confirma antes del 18 de septiembre</p>
+          <h2>¿Bailamos juntos?</h2>
+          <p>Confirma por WhatsApp para reservar tu lugar y recibir tu pase digital.</p>
+          <a class="button button--solid" id="whatsapp" href="#" target="_blank" rel="noopener" aria-disabled="true">Confirmar asistencia</a>
+          <p class="rsvp__hint" id="whatsapp-hint">Falta agregar el número de WhatsApp en la configuración.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <svg class="footer__mark" viewBox="0 0 120 92" aria-hidden="true"><use href="#butterfly"/></svg>
+  <strong>Lisa</strong>
+  <span>26 de septiembre de 2026 · Chihuahua</span>
+  <a href="index.html">Ver todas las versiones</a>
+</footer>
+
+<button class="music" id="music" type="button" aria-label="Activar o silenciar la música" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></button>
+<audio id="track" loop preload="metadata"></audio>
+
+<script src="assets/config.js"></script>
+<script>
+(() => {
+  "use strict";
+  const config = window.XV_CONFIG || {};
+  const local = config.clasica || {};
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const parents = local.padres || config.padres || {};
+  const parentNames = [parents.mama, parents.papa].filter((name) => name && String(name).trim());
+  if (parentNames.length) {
+    const list = document.getElementById("parents-list");
+    parentNames.forEach((name) => {
+      const item = document.createElement("span");
+      item.textContent = String(name).trim();
+      list.append(item);
+    });
+    document.getElementById("parents").hidden = false;
+  }
+
+  const whatsapp = local.whatsapp || config.whatsapp || "";
+  const message = local.mensaje || "¡Hola! Confirmo mi asistencia a los XV años de Lisa ✨";
+  const whatsappLink = document.getElementById("whatsapp");
+  const whatsappHint = document.getElementById("whatsapp-hint");
+  if (/^\d{10,15}$/.test(whatsapp)) {
+    whatsappLink.href = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
+    whatsappLink.removeAttribute("aria-disabled");
+    whatsappHint.hidden = true;
+  } else {
+    whatsappLink.removeAttribute("href");
+    whatsappLink.setAttribute("tabindex", "-1");
+  }
+
+  const target = new Date("2026-09-26T19:00:00-06:00").getTime();
+  const units = {
+    days: document.getElementById("days"),
+    hours: document.getElementById("hours"),
+    minutes: document.getElementById("minutes"),
+    seconds: document.getElementById("seconds")
+  };
+  const pad = (value) => String(value).padStart(2, "0");
+  function updateCountdown() {
+    const remaining = Math.max(0, target - Date.now());
+    const seconds = Math.floor(remaining / 1000);
+    units.days.textContent = pad(Math.floor(seconds / 86400));
+    units.hours.textContent = pad(Math.floor(seconds / 3600) % 24);
+    units.minutes.textContent = pad(Math.floor(seconds / 60) % 60);
+    units.seconds.textContent = pad(seconds % 60);
+  }
+  updateCountdown();
+  window.setInterval(updateCountdown, 1000);
+
+  const gate = document.getElementById("gate");
+  const enter = document.getElementById("enter");
+  const music = document.getElementById("music");
+  const track = document.getElementById("track");
+  const musicPath = String(config.musica || "").trim();
+  if (musicPath) {
+    track.src = musicPath;
+    music.classList.add("is-ready");
+    document.getElementById("gate-hint").textContent = "Sube el volumen · hay música";
+  }
+  function pauseMusic() {
+    track.pause();
+    music.classList.remove("is-playing");
+    music.setAttribute("aria-pressed", "false");
+  }
+  function playMusic() {
+    if (!musicPath) return;
+    track.volume = .5;
+    track.play().then(() => {
+      music.classList.add("is-playing");
+      music.setAttribute("aria-pressed", "true");
+    }).catch(pauseMusic);
+  }
+  enter.addEventListener("click", () => {
+    gate.classList.add("is-gone");
+    document.body.classList.remove("locked");
+    playMusic();
+  });
+  music.addEventListener("click", () => track.paused ? playMusic() : pauseMusic());
+  track.addEventListener("error", () => music.classList.remove("is-ready"));
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, {threshold: .12, rootMargin: "0px 0px -7%"});
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  }
+})();
+</script>
+</body>
+</html>

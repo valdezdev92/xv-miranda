@@ -7,6 +7,8 @@ La portada es `index.html`. Las invitaciones actuales son:
 - `invitacion-gala.html` — más cinematográfica, con las fotos al frente.
 - `invitacion-disco.html` — la más llamativa: neón, confeti, marquesinas y pista de baile.
 - `invitacion-disco-rosa.html` — la misma fiesta en claro: fondo blush y confeti pastel.
+- `invitacion-vintage-rosa.html` — fotografía a pantalla completa, papel antiguo,
+  mariposas, medallones y una paleta rosa empolvada para Lisa.
 
 Para publicar otra versión:
 

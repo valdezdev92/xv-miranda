@@ -36,5 +36,13 @@ window.XV_VERSIONES = [
     imagen: "assets/img/gal/g34.jpg",
     alt: "Miranda sentada en las escalinatas al atardecer",
     acento: "rosa"
+  },
+  {
+    slug: "invitacion-vintage-rosa.html",
+    titulo: "La versión vintage rosa",
+    descripcion: "Fotografía a pantalla completa, papel antiguo, mariposas, medallones y detalles editoriales en rosa empolvado.",
+    imagen: "assets/img/hero/h20.jpg",
+    alt: "Lisa en una sesión de fotos al aire libre",
+    acento: "vintage"
   }
 ];
