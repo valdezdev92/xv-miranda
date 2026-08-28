@@ -1012,7 +1012,72 @@ footer::before{
   background:conic-gradient(from 15deg,transparent 0 9%,rgba(208,82,139,.38) 12%,transparent 18% 36%,rgba(255,255,255,.8) 39%,transparent 44% 68%,rgba(185,60,115,.28) 72%,transparent 78%);
   animation:footer-lights 18s ease-in-out infinite alternate;
 }
+footer::after{
+  content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.58;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.96) 0 2px,transparent 3.2px) 0 0/68px 68px,
+    radial-gradient(circle,rgba(204,62,124,.32) 0 1.6px,transparent 2.8px) 23px 17px/54px 54px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 28%,#000 0 46%,transparent 78%);
+  mask-image:radial-gradient(ellipse at 50% 28%,#000 0 46%,transparent 78%);
+  animation:final-projections 11s linear infinite;
+}
+footer > *{position:relative;z-index:1}
 @keyframes footer-lights{to{transform:rotate(14deg) scale(1.08)}}
+@keyframes final-projections{to{background-position:68px -68px,-31px 71px}}
+.final-disco-reveal{display:grid;place-items:center;margin-bottom:.15rem}
+.final-disco-wrap{
+  --d:clamp(92px,21vw,142px);position:relative;width:var(--d);height:var(--d);
+  margin-top:clamp(34px,7vw,52px);transform-origin:50% clamp(-52px,-7vw,-34px);
+  animation:final-disco-swing 5.6s cubic-bezier(.45,.05,.55,.95) infinite;
+}
+.final-disco-cord{
+  position:absolute;left:50%;bottom:calc(100% - 3px);width:2px;height:clamp(38px,7vw,56px);translate:-50% 0;
+  background:linear-gradient(90deg,#4A4650,#F8F8FA 46%,#66616C 58%,#2C2930);
+  box-shadow:0 0 5px rgba(255,255,255,.75);
+}
+.final-disco-cord::after{
+  content:"";position:absolute;left:50%;bottom:-6px;width:14px;height:8px;translate:-50% 0;
+  border-radius:4px 4px 8px 8px;background:linear-gradient(90deg,#4B4E58,#F5F6F8,#565A65);
+}
+@keyframes final-disco-swing{0%,100%{transform:rotate(-3.2deg)}50%{transform:rotate(3.2deg)}}
+.final-disco-ball{
+  --d:100%;isolation:isolate;
+  box-shadow:0 20px 42px rgba(35,28,38,.36),0 0 34px rgba(255,255,255,.42),inset -16px -18px 36px rgba(20,23,29,.5);
+  animation:final-mirror-spin 4.8s linear infinite,final-ball-light 2.7s ease-in-out infinite;
+}
+.final-disco-ball::before{
+  content:"";position:absolute;z-index:1;inset:1px;border-radius:50%;pointer-events:none;
+  background:
+    linear-gradient(102deg,transparent 20%,rgba(255,255,255,.92) 36%,transparent 47%) 0 0/180% 100%,
+    repeating-linear-gradient(0deg,transparent 0 8px,rgba(255,255,255,.24) 8px 9px),
+    repeating-linear-gradient(90deg,transparent 0 8px,rgba(255,255,255,.2) 8px 9px);
+  mix-blend-mode:screen;animation:final-mirror-glide 3.2s ease-in-out infinite;
+}
+.final-disco-ball::after{
+  z-index:2;background:
+    radial-gradient(circle at 29% 22%,#FFF 0 3%,rgba(255,255,255,.82) 4%,transparent 17%),
+    radial-gradient(circle at 68% 66%,rgba(244,139,182,.42),transparent 24%);
+  animation:final-hotspot 3.4s ease-in-out infinite alternate;
+}
+@keyframes final-mirror-spin{to{background-position:0 0,142px 0,0 0}}
+@keyframes final-ball-light{50%{filter:brightness(1.18) contrast(1.04);box-shadow:0 24px 50px rgba(35,28,38,.42),0 0 52px rgba(255,255,255,.7),0 0 75px rgba(229,85,148,.25),inset -13px -15px 30px rgba(20,23,29,.42)}}
+@keyframes final-mirror-glide{0%,100%{background-position:145% 0,0 0,0 0}50%{background-position:-95% 0,0 4px,4px 0}}
+@keyframes final-hotspot{to{transform:rotate(18deg) scale(1.04);opacity:.72}}
+.final-disco-ray{
+  --a:0deg;--delay:0s;position:absolute;z-index:-1;left:50%;top:50%;width:clamp(170px,38vw,360px);height:2px;
+  transform-origin:0 50%;transform:rotate(var(--a));
+  background:linear-gradient(90deg,rgba(255,255,255,.72),rgba(239,123,174,.28) 44%,transparent 100%);
+  filter:blur(.4px);opacity:.25;animation:final-ray 3.6s ease-in-out infinite;animation-delay:var(--delay);
+}
+.final-disco-ray--one{--a:-26deg;--delay:-.6s}.final-disco-ray--two{--a:152deg;--delay:-1.8s}.final-disco-ray--three{--a:72deg;--delay:-2.7s}
+@keyframes final-ray{50%{opacity:.78;transform:rotate(calc(var(--a) + 7deg)) scaleX(1.08)}}
+.final-disco-spark{
+  --x:0;--y:0;--delay:0s;position:absolute;z-index:3;left:50%;top:50%;color:#FFF;
+  translate:var(--x) var(--y);font-size:clamp(.8rem,2.5vw,1.25rem);text-shadow:0 0 12px #FFF,0 0 22px #E95D9B;
+  animation:final-spark 2.2s ease-in-out infinite;animation-delay:var(--delay);
+}
+.final-disco-spark--one{--x:-70px;--y:-46px;--delay:-.4s}.final-disco-spark--two{--x:72px;--y:-18px;--delay:-1.3s}.final-disco-spark--three{--x:54px;--y:66px;--delay:-1.8s}
+@keyframes final-spark{0%,100%{transform:scale(.3) rotate(0);opacity:.18}50%{transform:scale(1.35) rotate(45deg);opacity:1}}
 .foot-kicker{margin:0;color:var(--blush-deep);font-size:.65rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
 .foot-name{
   display:flex;justify-content:center;margin:.5rem 0 0;font-family:"Bodoni Moda",Didot,serif;
@@ -1575,7 +1640,18 @@ footer::before{
 </main>
 
 <footer>
-  <div class="ball-wrap" style="padding-top:0"><div class="ball" style="--d:clamp(46px,11vw,64px)"></div></div>
+  <div class="final-disco-reveal rise" aria-hidden="true">
+    <div class="final-disco-wrap">
+      <span class="final-disco-cord"></span>
+      <span class="final-disco-ray final-disco-ray--one"></span>
+      <span class="final-disco-ray final-disco-ray--two"></span>
+      <span class="final-disco-ray final-disco-ray--three"></span>
+      <div class="ball final-disco-ball"></div>
+      <span class="final-disco-spark final-disco-spark--one">✦</span>
+      <span class="final-disco-spark final-disco-spark--two">✦</span>
+      <span class="final-disco-spark final-disco-spark--three">✦</span>
+    </div>
+  </div>
   <p class="foot-kicker">Gracias por acompañarme</p>
   <p class="foot-name"><span class="sr-only">Lisa</span><span class="foot-letter" aria-hidden="true" style="--i:0">L</span><span class="foot-letter" aria-hidden="true" style="--i:1">i</span><span class="foot-letter" aria-hidden="true" style="--i:2">s</span><span class="foot-letter" aria-hidden="true" style="--i:3">a</span></p>
   <span class="foot-ribbon" aria-hidden="true"></span>
