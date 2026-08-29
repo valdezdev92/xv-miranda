@@ -3,15 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>
-/* Activa el perfil estable antes del primer render. Se conserva al
-   girar el teléfono para evitar reconstruir todas las capas gráficas. */
-(function(){
-  var ua=navigator.userAgent||"",platform=navigator.platform||"";
-  var ios=/iP(hone|ad|od)/.test(platform)||(platform==="MacIntel"&&navigator.maxTouchPoints>1);
-  if(ios||matchMedia("(max-width:900px)").matches){document.documentElement.classList.add("mobile-safe")}
-})();
-</script>
 <title>Lisa · Mis XV Años · Pink XV</title>
 <meta name="description" content="Invitación Pink XV a los quince años de Lisa, con cinco galerías a pantalla completa, ribbons, destellos disco y música original. Sábado 26 de septiembre de 2026 en Chihuahua.">
 <meta name="theme-color" content="#FFF4F7">
@@ -23,8 +14,7 @@
 <meta property="og:image" content="assets/og.jpg">
 <meta property="og:locale" content="es_MX">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="assets/img/mobile/hero/h6.jpg" media="(max-width:900px)" fetchpriority="high">
-<link rel="preload" as="image" href="assets/img/hero/h6.jpg" media="(min-width:901px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/hero/h6.jpg" fetchpriority="high">
 </head>
 <body>
 
@@ -575,7 +565,6 @@ h2.title{
 .gal > .wrap .eyebrow::before,.gal > .wrap .eyebrow::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.72))}
 .gal > .wrap h2.title{margin:0;color:#FFF9FC;font-size:clamp(2rem,9vw,4.5rem);text-shadow:0 3px 20px rgba(51,20,31,.56)}
 .gal-frame{position:relative;grid-area:1/1;width:100%;height:100svh;min-height:620px;margin:0}
-.gal-frame picture{display:contents}
 .gal-frame::before{
   content:"";position:absolute;inset:-5%;z-index:0;opacity:0;pointer-events:none;
   background-image:linear-gradient(rgba(126,47,73,.2),rgba(51,20,31,.34)),var(--active-image);
@@ -1223,69 +1212,6 @@ footer > *{position:relative;z-index:1}
   .rise{opacity:1;transform:none;filter:none}
   .sparkle,.ambient-ribbon{display:none}
 }
-
-/* ---------- perfil estable para iPhone y pantallas móviles ----------
-   WebKit comparte el mismo motor en Safari y Chrome para iOS. En este
-   perfil se eliminan capas de composición continua, se detienen los
-   carruseles automáticos y el pie final no se renderiza. */
-@media(max-width:900px){
-  html.mobile-safe *,html.mobile-safe *::before,html.mobile-safe *::after{
-    animation:none!important;transition:none!important;
-  }
-  html.mobile-safe *,html.mobile-safe *::before,html.mobile-safe *::after{
-    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
-    filter:none!important;mix-blend-mode:normal!important;
-  }
-  html.mobile-safe #grain,
-  html.mobile-safe #sparkles,
-  html.mobile-safe .ambient-ribbon,
-  html.mobile-safe .countdown-stage,
-  html.mobile-safe .parents-scene,
-  html.mobile-safe .message-ribbons,
-  html.mobile-safe .ceremony-rays,
-  html.mobile-safe .rsvp-eq,
-  html.mobile-safe footer{display:none!important}
-
-  html.mobile-safe #ambient::before,html.mobile-safe #ambient::after,
-  html.mobile-safe .hero::before,
-  html.mobile-safe .parents-section::before,html.mobile-safe .parents-section::after,
-  html.mobile-safe .parents::before,
-  html.mobile-safe .message-section::before,html.mobile-safe .message-card::after,
-  html.mobile-safe .venues-section::before,
-  html.mobile-safe .salon-section::before,html.mobile-safe .salon-section::after,
-  html.mobile-safe .salon-media::before,
-  html.mobile-safe .dress-section::before,html.mobile-safe .dress-card::after,
-  html.mobile-safe .details-section::before,
-  html.mobile-safe .rsvp-section::before,html.mobile-safe .rsvp-shell::before,
-  html.mobile-safe .count div::after,
-  html.mobile-safe #music::before{content:none!important;display:none!important}
-
-  html.mobile-safe #gate.gone,html.mobile-safe .hero-curtain{display:none!important}
-  html.mobile-safe .gate-eyebrow,
-  html.mobile-safe .gate-name-stage,
-  html.mobile-safe .gate-sub,
-  html.mobile-safe .gate-badge,
-  html.mobile-safe .gate-btn,
-  html.mobile-safe .gate-note,
-  html.mobile-safe .rise{
-    opacity:1!important;transform:none!important;filter:none!important;
-  }
-  html.mobile-safe .venue,
-  html.mobile-safe .note,
-  html.mobile-safe .parent-entry{
-    opacity:1!important;translate:0!important;rotate:0deg!important;
-  }
-  html.mobile-safe .salon-background{opacity:1!important;transform:none!important}
-  html.mobile-safe .church-draw path,
-  html.mobile-safe .church-draw circle,
-  html.mobile-safe .dress-art path{stroke-dasharray:none!important;stroke-dashoffset:0!important}
-
-  html.mobile-safe .hero-stage figure{transform:none!important}
-  html.mobile-safe .hero-stage figure:first-child{background-image:url("assets/img/mobile/hero/h6.jpg")!important}
-  html.mobile-safe .hero-stage figure:not(:first-child){display:none!important;background-image:none!important}
-  html.mobile-safe .gal-frame picture{display:contents}
-  html.mobile-safe .gal-frame img{transform:none!important}
-}
 </style>
 
 <!-- ============================================================
@@ -1514,10 +1440,10 @@ footer > *{position:relative;z-index:1}
       <h2 class="title" style="margin-bottom:0">Así llegué hasta aquí</h2>
     </div>
     <div class="gal-frame rise" id="gal1">
-      <picture><source media="(max-width:900px)" srcset="assets/img/mobile/gal/g2.jpg"><img class="on" src="assets/img/gal/g2.jpg" alt="Lisa en el puente del lago" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g4.jpg"><img data-src="assets/img/gal/g4.jpg" alt="Lisa recargada en el barandal" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g6.jpg"><img data-src="assets/img/gal/g6.jpg" alt="Lisa caminando por el puente" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g10.jpg"><img data-src="assets/img/gal/g10.jpg" alt="Lisa al atardecer en el puente" width="1200" height="800" loading="lazy" decoding="async"></picture>
+      <img class="on" src="assets/img/gal/g2.jpg" alt="Lisa en el puente del lago" width="1200" height="1800" loading="eager" decoding="async">
+      <img src="assets/img/gal/g4.jpg" alt="Lisa recargada en el barandal" width="1200" height="1800" loading="eager" decoding="async">
+      <img src="assets/img/gal/g6.jpg" alt="Lisa caminando por el puente" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g10.jpg" alt="Lisa al atardecer en el puente" width="1200" height="1800" loading="lazy" decoding="async">
       <div class="gal-glow"></div>
     </div>
     <div class="dots" id="dots1"></div>
@@ -1624,10 +1550,10 @@ footer > *{position:relative;z-index:1}
       <h2 class="title" style="margin-bottom:0">Entre cielos y sonrisas</h2>
     </div>
     <div class="gal-frame rise" id="gal2">
-      <picture><source media="(max-width:900px)" srcset="assets/img/mobile/gal/g20.jpg"><img class="on" src="assets/img/gal/g20.jpg" alt="Lisa contra el cielo azul" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g26.jpg"><img data-src="assets/img/gal/g26.jpg" alt="Lisa a la orilla del lago" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g27.jpg"><img data-src="assets/img/gal/g27.jpg" alt="Retrato de Lisa" width="1200" height="800" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g28.jpg"><img data-src="assets/img/gal/g28.jpg" alt="Lisa frente al lago" width="800" height="1200" loading="lazy" decoding="async"></picture>
+      <img class="on" src="assets/img/gal/g20.jpg" alt="Lisa contra el cielo azul" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g26.jpg" alt="Lisa a la orilla del lago" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g27.jpg" alt="Retrato de Lisa" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g28.jpg" alt="Lisa frente al lago" width="1200" height="1800" loading="lazy" decoding="async">
       <div class="gal-glow"></div>
     </div>
     <div class="dots" id="dots2"></div>
@@ -1691,10 +1617,10 @@ footer > *{position:relative;z-index:1}
       <h2 class="title">Un destello muy mío</h2>
     </div>
     <div class="gal-frame rise" id="gal3">
-      <picture><source media="(max-width:900px)" srcset="assets/img/mobile/gal/g29.jpg"><img class="on" src="assets/img/gal/g29.jpg" alt="Lisa a contraluz en el campo" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g30.jpg"><img data-src="assets/img/gal/g30.jpg" alt="Lisa sonriendo" width="1200" height="800" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g31.jpg"><img data-src="assets/img/gal/g31.jpg" alt="Lisa en las escalinatas" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g32.jpg"><img data-src="assets/img/gal/g32.jpg" alt="Lisa sentada en las escalinatas" width="800" height="1200" loading="lazy" decoding="async"></picture>
+      <img class="on" src="assets/img/gal/g29.jpg" alt="Lisa a contraluz en el campo" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g30.jpg" alt="Lisa sonriendo" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g31.jpg" alt="Lisa en las escalinatas" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g32.jpg" alt="Lisa sentada en las escalinatas" width="1200" height="1800" loading="lazy" decoding="async">
       <div class="gal-glow"></div>
     </div>
     <div class="dots" id="dots3"></div>
@@ -1733,9 +1659,9 @@ footer > *{position:relative;z-index:1}
       <h2 class="title">Lista para la fiesta</h2>
     </div>
     <div class="gal-frame rise" id="gal4">
-      <picture><source media="(max-width:900px)" srcset="assets/img/mobile/gal/g34.jpg"><img class="on" src="assets/img/gal/g34.jpg" alt="Lisa en las escalinatas al atardecer" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g35.jpg"><img data-src="assets/img/gal/g35.jpg" alt="Lisa sentada en las gradas" width="800" height="1200" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/gal/g36.jpg"><img data-src="assets/img/gal/g36.jpg" alt="Lisa en el campo dorado" width="800" height="1200" loading="lazy" decoding="async"></picture>
+      <img class="on" src="assets/img/gal/g34.jpg" alt="Lisa en las escalinatas al atardecer" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g35.jpg" alt="Lisa sentada en las gradas" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/gal/g36.jpg" alt="Lisa en el campo dorado" width="1200" height="1800" loading="lazy" decoding="async">
       <div class="gal-glow"></div>
     </div>
     <div class="dots" id="dots4"></div>
@@ -1750,10 +1676,10 @@ footer > *{position:relative;z-index:1}
       <h2 class="title">Que empiece mi noche</h2>
     </div>
     <div class="gal-frame rise" id="gal5">
-      <picture><source media="(max-width:900px)" srcset="assets/img/mobile/hero/h6.jpg"><img class="on" src="assets/img/hero/h6.jpg" alt="Lisa sonriendo en su sesión de XV años" width="1200" height="1800" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/hero/h20.jpg"><img data-src="assets/img/hero/h20.jpg" alt="Lisa bajo el cielo azul" width="1200" height="1800" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/hero/h28.jpg"><img data-src="assets/img/hero/h28.jpg" alt="Lisa posando junto al lago" width="1200" height="1800" loading="lazy" decoding="async"></picture>
-      <picture><source media="(max-width:900px)" data-srcset="assets/img/mobile/hero/h36.jpg"><img data-src="assets/img/hero/h36.jpg" alt="Lisa en el campo al atardecer" width="1200" height="1800" loading="lazy" decoding="async"></picture>
+      <img class="on" src="assets/img/hero/h6.jpg" alt="Lisa sonriendo en su sesión de XV años" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/hero/h20.jpg" alt="Lisa bajo el cielo azul" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/hero/h28.jpg" alt="Lisa posando junto al lago" width="1200" height="1800" loading="lazy" decoding="async">
+      <img src="assets/img/hero/h36.jpg" alt="Lisa en el campo al atardecer" width="1200" height="1800" loading="lazy" decoding="async">
       <div class="gal-glow"></div>
     </div>
     <div class="dots" id="dots5"></div>
@@ -1842,8 +1768,7 @@ footer > *{position:relative;z-index:1}
     mensaje: LOCAL.mensaje || "¡Hola! Confirmo mi asistencia a los XV años de Lisa ✨"
   };
 
-  var mobileSafe = document.documentElement.classList.contains("mobile-safe");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches || mobileSafe;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Safari móvil necesita un perfil de composición más ligero en
      el cierre. ?ios-safe=1 permite comprobarlo también en local. */
@@ -1950,30 +1875,22 @@ footer > *{position:relative;z-index:1}
   /* ====== FONDO DE LA IGLESIA ======
      Si se configuró una ruta, se comprueba primero que la imagen
      exista y se coloca detrás del dibujo animado.               */
-  function rutaImagenMovil(ruta){
-    if (!mobileSafe || ruta.indexOf("assets/img/") !== 0) return ruta;
-    return ruta.replace("assets/img/", "assets/img/mobile/");
-  }
   var mediaIglesia  = document.getElementById("media-iglesia");
   var dibujoIglesia = document.getElementById("dibujo-iglesia");
   var rutaIglesia   = String(LOCAL.iglesia || "").trim();
-  var rutaIglesiaActiva = rutaImagenMovil(rutaIglesia);
   if (mediaIglesia && dibujoIglesia && rutaIglesia){
     var prueba = new Image();
     prueba.onload = function(){
       var img = document.createElement("img");
       img.className = "church-background";
-      img.src = rutaIglesiaActiva;
+      img.src = rutaIglesia;
       img.alt = "Bosquejo rosa de la fachada de la Iglesia San Felipe";
       img.decoding = "async";
       img.loading = "lazy";
       mediaIglesia.insertBefore(img, dibujoIglesia);
       mediaIglesia.classList.add("has-background");
     };
-    prueba.onerror = function(){
-      if (rutaIglesiaActiva !== rutaIglesia) { rutaIglesiaActiva = rutaIglesia; prueba.src = rutaIglesia; }
-    };
-    prueba.src = rutaIglesiaActiva;
+    prueba.src = rutaIglesia;
   }
 
   /* ====== SECCIÓN DEL SALÓN ======
@@ -1981,23 +1898,19 @@ footer > *{position:relative;z-index:1}
      únicamente con sus tarjetas y animaciones.                   */
   var mediaSalon = document.getElementById("media-salon");
   var rutaSalon = String(LOCAL.salon || "").trim();
-  var rutaSalonActiva = rutaImagenMovil(rutaSalon);
   if (mediaSalon && rutaSalon){
     var pruebaSalon = new Image();
     pruebaSalon.onload = function(){
       var imgSalon = document.createElement("img");
       imgSalon.className = "salon-background";
-      imgSalon.src = rutaSalonActiva;
+      imgSalon.src = rutaSalon;
       imgSalon.alt = "Bosquejo rosa de la fachada del Salón Cantabria";
       imgSalon.decoding = "async";
       imgSalon.loading = "lazy";
       mediaSalon.insertBefore(imgSalon, mediaSalon.firstChild);
       mediaSalon.classList.add("has-background");
     };
-    pruebaSalon.onerror = function(){
-      if (rutaSalonActiva !== rutaSalon) { rutaSalonActiva = rutaSalon; pruebaSalon.src = rutaSalon; }
-    };
-    pruebaSalon.src = rutaSalonActiva;
+    pruebaSalon.src = rutaSalon;
   }
 
   /* ====== CUENTA REGRESIVA — 26 sep 2026, 7:00 pm (UTC-6) ====== */
@@ -2007,7 +1920,6 @@ footer > *{position:relative;z-index:1}
   function setCounter(node,value){
     if (node.textContent === value) return;
     node.textContent = value;
-    if (mobileSafe) return;
     node.classList.remove("flip");
     void node.offsetWidth;
     node.classList.add("flip");
@@ -2032,7 +1944,7 @@ footer > *{position:relative;z-index:1}
      cada una con su propio retraso para que titilen desfasadas. */
   ["floor","floor2","floor3"].forEach(function(id){
     var f = document.getElementById(id); if(!f) return;
-    var n = mobileSafe ? 5 : (innerWidth >= 720 ? 15 : 9);
+    var n = innerWidth >= 720 ? 15 : 9;
     var tam = [30, 17, 24, 40, 21, 33, 15];
     var html = "";
     for (var i=0;i<n;i++){
@@ -2067,17 +1979,6 @@ footer > *{position:relative;z-index:1}
 
     var gi = 0, timer = null;
 
-    function cargarFoto(pic){
-      var picture = pic.parentElement;
-      var source = picture && picture.tagName === "PICTURE" ? picture.querySelector("source[data-srcset]") : null;
-      if (source && !source.getAttribute("srcset")) source.setAttribute("srcset", source.getAttribute("data-srcset"));
-      if (!pic.getAttribute("src") && pic.getAttribute("data-src")) pic.setAttribute("src", pic.getAttribute("data-src"));
-    }
-
-    /* En escritorio se precargan las secuencias. En móvil sólo se
-       descarga la foto visible; las demás esperan un toque o swipe. */
-    if (!mobileSafe) pics.forEach(cargarFoto);
-
     pics.forEach(function(_, i){
       var b = document.createElement("button");
       b.type = "button";
@@ -2088,15 +1989,12 @@ footer > *{position:relative;z-index:1}
     var btns = dots.querySelectorAll("button");
 
     function show(i){
-      var siguiente = (i + pics.length) % pics.length;
-      cargarFoto(pics[siguiente]);
       pics[gi].classList.remove("on");
       btns[gi].setAttribute("aria-current","false");
-      gi = siguiente;
+      gi = (i + pics.length) % pics.length;
       pics[gi].classList.add("on");
       btns[gi].setAttribute("aria-current","true");
-      var fondo = pics[gi].currentSrc || pics[gi].getAttribute("src");
-      if (fondo) gal.style.setProperty("--active-image", 'url("' + fondo + '")');
+      gal.style.setProperty("--active-image", 'url("' + pics[gi].src + '")');
     }
     function restart(){
       if (timer) clearInterval(timer);
@@ -2122,14 +2020,10 @@ footer > *{position:relative;z-index:1}
   montarGaleria("gal5", "dots5", 5800);
 
   /* ====== REVELADO ====== */
-  if (mobileSafe) {
-    document.querySelectorAll(".rise").forEach(function(n){ n.classList.add("seen"); });
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("seen"); io.unobserve(en.target); } });
-    }, { threshold:.14, rootMargin:"0px 0px -8% 0px" });
-    document.querySelectorAll(".rise").forEach(function(n){ io.observe(n); });
-  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("seen"); io.unobserve(en.target); } });
+  }, { threshold:.14, rootMargin:"0px 0px -8% 0px" });
+  document.querySelectorAll(".rise").forEach(function(n){ io.observe(n); });
 
   /* ====== MÚSICA PINK DISCO ======
      Si config.js contiene un archivo, se reproduce ese audio. Si
@@ -2162,13 +2056,6 @@ footer > *{position:relative;z-index:1}
   }
 
   function useSynthFallback(){
-    if (mobileSafe) {
-      hasTrack = false;
-      pauseMusic();
-      mBtn.hidden = true;
-      gateMusicNote.textContent = "La invitación está lista para continuar";
-      return;
-    }
     hasTrack = false;
     musicTitle = "Pink Disco";
     syncMusicCopy();
@@ -2294,10 +2181,7 @@ footer > *{position:relative;z-index:1}
   }
 
   function playMusic(){
-    if (!hasTrack) {
-      if (mobileSafe) { mBtn.hidden = true; return; }
-      playSynth(); return;
-    }
+    if (!hasTrack) { playSynth(); return; }
     track.volume = .52;
     var promise = track.play();
     if (promise && promise.then) {
