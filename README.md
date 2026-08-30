@@ -3,10 +3,8 @@
 Invitación digital para los XV años de Miranda — **sábado 26 de septiembre de 2026**.
 Sitio estático, sin base de datos y sin proceso de build: se sirve tal cual con Nginx.
 
-- `/` — la portada, donde el invitado elige entre las versiones de la invitación
-- `/invitacion-clasica.html` · `/invitacion-gala.html` · `/invitacion-disco.html` ·
-  `/invitacion-disco-rosa.html` — las cuatro invitaciones (portada, cuenta regresiva,
-  galería, papás, mapas, detalles de la noche, WhatsApp)
+- `/` — la invitación (portada, cuenta regresiva, galería, papás, mapas,
+  detalles de la noche, WhatsApp). Se abre directo, sin pantalla de opciones.
 - `/pases/` — generador de pases digitales en PNG 1080×1920 (herramienta interna, marcada `noindex`)
 
 ---
@@ -18,12 +16,7 @@ Sitio estático, sin base de datos y sin proceso de build: se sirve tal cual con
 ├── Dockerfile           imagen de Nginx con el sitio adentro
 ├── nginx.conf           compresión, caché y sonda /healthz
 └── public/
-    ├── index.html       la portada con las versiones
-    ├── versiones.js     ← la lista de invitaciones que muestra la portada
-    ├── invitacion-clasica.html
-    ├── invitacion-gala.html
-    ├── invitacion-disco.html
-    ├── invitacion-disco-rosa.html
+    ├── index.html       la invitación completa (se abre al entrar al sitio)
     ├── pases/
     │   └── index.html   generador de pases (autocontenido)
     └── assets/
@@ -149,24 +142,13 @@ cd public && python3 -m http.server 8080
 | Vestimenta | Formal |
 | Confirmar antes del | 18 de septiembre |
 
-La versión clásica va en claro: fondo crema `#FDF8F4`, texto ciruela `#3A2430`
+La invitación va en claro: fondo crema `#FDF8F4`, texto ciruela `#3A2430`
 y acentos en blush `#C97C8E` y vino `#9E5468`, con los nombres en un degradado
-de oro rosa. No lleva haces de luz giratorios y las fotos van repartidas en
-tres galerías separadas.
+de oro rosa. Las fotos van repartidas en galerías separadas a pantalla completa.
+Usa **Bodoni Moda** (títulos) y **Jost** (texto), servidas desde Google Fonts.
 
-La versión gala conserva la paleta oscura: rosa blush `#F0BCC6` · plata
-`#DCDFE5` · fondo ciruela `#0C0710`. Las dos usan **Bodoni Moda** (títulos)
-y **Jost** (texto).
-
-La versión disco usa su propia paleta de neón: magenta `#FF2E9A` · cyan `#2FE6E0` ·
-oro `#FFC94D` · violeta `#8B5CF6` sobre `#07040F`. La versión disco rosa es la misma
-fiesta en claro: blush `#FFF1F5` de fondo, texto ciruela `#4A1F38` y acentos en
-rosa `#E85D9B`, lila `#C9A7E8` y oro rosa `#D9A17C`. Las dos usan **Monoton**
-(el nombre), **Bebas Neue** (títulos) y **Jost** (texto). Todas las fuentes vienen
-de Google Fonts.
-
-Todo el movimiento de las dos versiones disco se apaga solo si el teléfono tiene
-activada la opción de reducir animaciones.
+Todo el movimiento se apaga solo si el teléfono tiene activada la opción de
+reducir animaciones.
 
 ---
 
