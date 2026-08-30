@@ -5,7 +5,8 @@ Sitio estático, sin base de datos y sin proceso de build: se sirve tal cual con
 
 - `/` — la invitación (portada, cuenta regresiva, galería, papás, mapas,
   detalles de la noche, WhatsApp). Se abre directo, sin pantalla de opciones.
-- `/pases/` — generador de pases digitales en PNG 1080×1920 (herramienta interna, marcada `noindex`)
+- `/pases/` — generador de pases digitales en PNG 1080×1920, con el mismo estilo
+  de la invitación (herramienta interna, marcada `noindex`)
 
 ---
 
@@ -129,6 +130,12 @@ cd public && python3 -m http.server 8080
 > El generador de pases funciona incluso abriendo
 > `public/pases/index.html` directamente desde el disco: las fotos van
 > incrustadas para que la descarga del PNG no falle por seguridad del canvas.
+>
+> El pase se dibuja en canvas reusando el sistema visual de la invitación:
+> la misma paleta, Bodoni Moda y Jost, y los dibujos del `<svg class="sprite">`
+> (el moño de satín, las estrellas rosa y plata, las serpentinas) trazados con
+> `Path2D` a partir de las mismas rutas. El fondo y los adornos se dibujan una
+> sola vez y se reutilizan, así que escribir el nombre re-dibuja al instante.
 
 ---
 
