@@ -144,7 +144,7 @@ cd public && python3 -m http.server 8080
 | | |
 |---|---|
 | Fecha | Sábado 26 de septiembre de 2026 |
-| Misa | 7:00 pm — Iglesia San Felipe |
+| Misa | 7:30 pm — Iglesia San Felipe |
 | Recepción | 9:00 pm — Salón Cantabria |
 | Vestimenta | Formal |
 | Confirmar antes del | 18 de septiembre |
